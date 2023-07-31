@@ -1,0 +1,59 @@
+@use '../abstracts/' as a;
+@use './fonts' as f;
+
+h1, 
+h2, 
+h3 {
+    //font-weight: 700;
+    //line-height: 1.1;
+    margin-top: 0;
+}
+ 
+h1{
+    font-size: clamp(a.rem(28), a.rem(16) + 7vw ,a.rem(200));
+    -webkit-text-stroke: a.rem(1) hsla(170, 48%, 50%, 0.3);
+    -webkit-text-fill-color: #fff0;
+     font-family: f.$font-lemon;
+     font-weight: 300; 
+    //font-size: clamp(a.rem(28), a.rem(16) + 2vw ,a.rem(40));
+    //font-size: clamp(1.75rem, 1rem + 2vw ,2.5rem);
+   
+}
+
+h2{
+    //font-size: clamp(a.rem(28), 0.875rem + 1.5vw ,2.25rem);
+    font-size: clamp(a.rem(40), a.rem(16) + 4vw ,a.rem(93));
+    -webkit-text-stroke: a.rem(1) hsla(170, 48%, 50%); 
+    -webkit-text-fill-color: #fff0;
+    text-transform: uppercase;
+    font-family: f.$font-lemon;
+    font-weight: 300;
+}
+
+.spanline{
+    font-size: a.rem(22);
+    &::before{
+        content: '\2015';
+        color: var(--bluelight-color);
+        font-weight: bold;
+        padding-right: a.em(5);
+    }
+}
+
+p{
+    margin-top: 0;
+    font-size: a.rem(16); 
+}
+
+a, 
+a:visited, 
+a:active{
+    text-decoration: none;
+    color: var(--linktext-color);
+}
+
+figure{
+    margin: 0px;
+    padding: 0px;
+}
+

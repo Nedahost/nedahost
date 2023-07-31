@@ -1,0 +1,243 @@
+@use '../abstracts' as a;
+
+
+.outerservices{
+    background-color: var(--bgmain-color);
+    padding: 0 5% 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    @include a.breakpoint(medium){
+        height: 100vh;
+        padding-bottom: 0; 
+    }
+
+    &__title{
+       order: 1;
+       
+    }
+    &__list{
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        counter-reset: h3;
+        @include a.breakpoint(medium){
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-evenly; 
+        }
+        li{
+            
+            text-align: center;
+        @include a.breakpoint(medium){
+            width: 28%;
+        }
+            figure{
+                margin: 0px;
+                padding: 0px;
+                a{
+                    img{
+                        width: 100%;
+                        max-width: 250px;
+                        height: auto;
+                    }
+                }
+            }
+            h3{
+                margin: 0;
+                padding: a.em(5) 0 a.em(5);
+                font-weight: 200;
+                font-size: a.rem(32);
+                text-align: center;
+                
+                a{
+                    color: var(--linktext-color);
+                }
+                &::before{
+                    counter-increment: h3;                  /* Increment the value of section counter by 1 */
+                    content: "0"counter(h3) '\00a0 \2014';
+                    color: var(--bluelight-color);
+                }
+            }
+            p{
+                line-height: a.em(25);
+            }
+            .sublisting{
+                padding-bottom: a.em(10);
+                li{
+                    display: inline;
+                    padding: 0 a.em(5);
+                    font-size: 14px;
+                    a{
+                        &:hover{
+                            text-decoration: underline;
+                            -webkit-text-decoration-color: var(--bluelight-color);   
+                            text-decoration-color: var(--bluelight-color);
+                            text-underline-offset: 4px;
+                            text-decoration-thickness: 2px;
+                        }
+                    }
+                }
+            }
+        }  
+    }
+    &__btn{
+        order: 3;
+        text-align: center;
+    }
+}
+
+.outercompany{
+    background-color: var(--bluelight-color);
+    padding: 0 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    @include a.breakpoint(medium){
+        height: 100vh;
+    }
+    h2{
+        -webkit-text-stroke: 2px rgba(255, 255, 255, 0.3);
+    }
+    &__title{
+        
+        span{
+            color: var(--white-color);
+            &::before{
+                color: var(--white-color);
+            }
+        }
+    }
+
+    &__description{
+        color: var(--white-color);
+        
+        p{
+            line-height: a.em(25);
+            font-size: clamp(a.rem(16), a.rem(16) + 1.5vw ,a.rem(17));
+
+            @include a.breakpoint(xxxlarge){
+                font-size: a.rem(24);
+            }
+        }
+    }
+
+    &__slogan{
+        margin: 30px 0 0 auto;
+        text-align: right;
+        width: 45%;
+        @include a.breakpoint(xxxlarge){
+            width: 28%;
+        }
+        p{
+            
+            font-size: 30px;
+            color: var(--white-color);
+            &::before{
+                content: "\201C";
+            }
+
+            &::after{
+                content: "\201D";
+            }
+        }
+        
+    }
+    
+}
+
+.hmprojects{
+    background-color: var(--bgmain-color);
+    padding: 0 5% a.em(30);    
+    display: flex;
+    flex-direction: column;
+    &__list{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        counter-reset: li;
+        @include a.breakpoint-down(medium){
+            padding: 10% 0;
+        }
+        li{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            @include a.breakpoint-down(medium){
+                padding: a.em(15) 0;
+            }
+            @include a.breakpoint(medium){
+                flex-direction: row;
+                width: 83%;
+            }
+            .hmprojectdetails{
+                @include a.breakpoint(medium){
+                width: 50%;
+                }
+                &__number{
+                    font-size: a.rem(20);
+                    font-weight: 300;
+                    &::before{
+                        counter-increment: li;                  /* Increment the value of section counter by 1 */
+                        content: "0"counter(li) '\00a0 \2014';
+                        color: var(--bluelight-color);
+                        font-size: a.rem(25);
+                    }
+                }
+
+                &__title{
+                    font-size: a.rem(30);
+                    font-weight: 300;
+                }
+            }
+            .hmprojectsimg{
+                @include a.breakpoint(medium){
+                width: 50%;
+                }
+                figure{
+                    margin: 0;
+                    padding: 0;
+                    img{
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+            }
+            &:nth-child(odd){
+                .hmprojectdetails{
+                    @include a.breakpoint(medium){
+                        order: 1;
+                        text-align: right;
+                        padding-right: 60px;
+                    }
+                    margin: auto;
+                }
+                .hmprojectsimg{
+                    @include a.breakpoint(medium){
+                        order: 2;
+                    }
+                }
+            }
+            &:nth-child(even){
+                .hmprojectdetails{
+                    @include a.breakpoint(medium){
+                    order: 2;
+                    text-align: left;
+                    padding-left: 60px;
+                    margin: auto;
+                    }
+                }
+                .hmprojectsimg{
+                    @include a.breakpoint(medium){
+                    order: 1;
+                    }
+                }
+            }
+        }
+    }
+    &__bttn{
+        margin-top: a.rem(30);
+        text-align: center;
+    }
+}

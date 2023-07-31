@@ -1,0 +1,95 @@
+@use '../abstracts' as a;
+@use '../base' as b;
+
+
+header{
+    background: var(--background-color);
+    color: var(--white-color);
+    padding: 0 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+        .topheader{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            #outermenu{
+                display: flex;
+                flex-direction: column;
+/*                .lang{
+                    ul{
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: flex-end;
+                        gap: 6px;
+                        li{
+                            a{
+                                &:hover{
+                                    text-decoration: underline;
+                                    -webkit-text-decoration-color: var(--bluelight-color);  Safari   
+                                    text-decoration-color: var(--bluelight-color);
+                                    text-underline-offset: 4px;
+                                    text-decoration-thickness: 2px;
+                                }
+                            }
+                        }
+                    }
+                }*/
+
+                nav{
+                   
+                    ul{
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        gap:30px;
+                        
+                    }
+                }
+            }
+
+        }
+
+        
+        
+
+            .readmore {
+                @include a.breakpoint(medium){
+                    width: 30%;
+                }
+                display: flex;
+                &::before {
+                    content: "\2193";
+                    font-size: clamp(a.rem(50), a.rem(16) + 3.5vw, a.rem(70));
+                    font-weight: 100;
+                    transition: all 1s ease;
+                    margin: auto 0;
+                    
+                    
+                }
+                &:hover::before {
+                    color: var(--bluelight-color) !important;
+                }
+
+                .read {
+                    font-size: clamp(a.rem(16), a.rem(16) + 1vw, a.rem(30));
+                    font-weight: 200;
+                    margin: auto 0;
+                }
+
+                a {
+                    color: var(--white-color) !important;
+                    transition: all 1s ease;
+                    &:hover {
+                        color: var(--bluelight-color) !important;
+                    }
+                 }
+        }
+    
+}
+
+.home>header{
+    height: 100vh;
+    padding-bottom: 0;
+}

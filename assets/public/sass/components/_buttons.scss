@@ -1,0 +1,30 @@
+@use '../abstracts/' as a;
+
+.button{
+    border: 1px solid var(--background-color);
+    padding: 7px 55px;
+    outline: none;
+    font-size: a.rem(14);
+    transition: all 1s ease;
+    &:hover{
+        background-color: var(--bluelight-color);
+        color: var(--white-color);
+    }
+}
+
+.formbutton{
+    &__contact{
+        background-color: var(--bluelight-color);
+        padding: 7px 55px;
+        outline: none;
+        font-size: a.rem(14);
+        transition: all 1s ease;
+        color: var(--white-color) !important;
+        border: none;
+        cursor: pointer;
+        &:hover{
+            background-color: var(--bluelight-color);
+            color: var(--white-color);
+        }
+    }
+}

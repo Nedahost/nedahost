@@ -1,0 +1,33 @@
+@use './fonts' as f;
+
+html{
+    font-size: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    height: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+}
+
+*,
+*::before, 
+*::after{
+    -moz-box-sizing: inherit;
+    -ms-box-sizing: inherit;
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    font-family: f.$font;
+}
+
+main{
+    background: var(--white-color);
+}

@@ -16,7 +16,7 @@
                             <li>E. INFO@NEDAHOST.GR</li>
                         </ul>
                         <div class="socialmedia"><!-- social media start -->
-                            <h6>Ακολούθησε μας στα socail media:</h6>
+                            <h6>Ακολούθησε μας στα social media:</h6>
                             <ul>
                                 <li>
                                     <a href="https://www.linkedin.com/company/18602896" target="_blank">

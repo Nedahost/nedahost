@@ -65,11 +65,12 @@ header{
                     font-weight: 100;
                     transition: all 1s ease;
                     margin: auto 0;
-                    
-                    
+                    transform: translateY(0); /* Αρχική θέση */
+                    display: inline-block;
                 }
                 &:hover::before {
                     color: var(--bluelight-color) !important;
+                    transform: translateY(10px);
                 }
 
                 .read {

@@ -85,7 +85,6 @@
                 </p>
             </div><!-- outer company slogan end -->
         </section><!-- outer company end-->
-
         <section class="hmprojects"><!-- home projects start -->
             <div class="hmprojects__title"><!-- title section start -->
                 <h2>PROJECTS</h2>

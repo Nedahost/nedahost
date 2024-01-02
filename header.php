@@ -16,6 +16,29 @@
        
         <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet"> 
         <?php wp_head(); ?>
+
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+    $('.readmore a').on('click', function(event) {
+        event.preventDefault();
+
+        // Προσαρμόστε το ύψος που θέλετε να κατεβείτε
+        var targetOffset = $('.outerservices').offset().top;
+
+        // Εκτελέστε το smooth scroll
+        $('html, body').animate({
+            scrollTop: targetOffset
+        }, 1000); // Χρόνος κύλισης σε milliseconds (εδώ είναι 1 δευτερόλεπτο)
+
+        // Εάν θέλετε, μπορείτε να κλείσετε το μενού μετά το κλικ
+        // Αν χρησιμοποιείτε Bootstrap, θα μπορούσατε να χρησιμοποιήσετε $('.navbar-toggler').click();
+    });
+});
+
+            </script>
+
         <script type="text/javascript">
 
 
@@ -79,20 +102,7 @@
                     <?php } ?>
                 </figure>
                 <div id="outermenu">
-<!--                    <div class="lang">
-                        <ul>
-                            <li>
-                                <a href="">
-                                    GR
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    EN
-                                </a>
-                            </li>
-                        </ul>
-                    </div>-->
+
                     <nav>
                         <?php
                         wp_nav_menu(

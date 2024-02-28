@@ -81,7 +81,7 @@
             </div>
             <div class="outercompany__slogan"><!-- outer company slogan start -->
                 <p>
-                    Ας συνεργαστούμε για να σας βοηθήσουμε να πετύχετε την επιτυχία που σας αξίζει. 
+                    Ας συνεργαστούμε για να σας οδηγήσουμε στην επιτυχία που αξίζετε! 
                 </p>
             </div><!-- outer company slogan end -->
         </section><!-- outer company end-->
@@ -122,7 +122,6 @@
                     </div><!-- home projects image end -->
                     <div class="hmprojectdetails"><!-- home projects details start -->
                         <div class="hmprojectdetails__number">
-                            
                             Branding / Website
                         </div>
                         <div class="hmprojectdetails__title"><!-- title start -->

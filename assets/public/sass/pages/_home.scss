@@ -115,11 +115,9 @@
         
         p{
             line-height: a.em(25);
-            font-size: clamp(a.rem(16), a.rem(16) + 1.5vw ,a.rem(17));
+           font-size: clamp(0.8rem, 12vw + 1rem , 1.25rem);
 
-            @include a.breakpoint(xxxlarge){
-                font-size: a.rem(24);
-            }
+          
         }
     }
 
@@ -127,9 +125,6 @@
         margin: 30px 0 0 auto;
         text-align: right;
         width: 45%;
-        @include a.breakpoint(xxxlarge){
-            width: 28%;
-        }
         p{
             
             font-size: 30px;

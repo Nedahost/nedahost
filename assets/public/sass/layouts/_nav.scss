@@ -1,0 +1,89 @@
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bluelight-color); /* Semi-transparent black overlay */
+    z-index: 998; /* Ensure it's below the menu */
+  }
+  
+  .burger-menu {
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+    top: 20px;
+    left: 20px;
+    z-index: 999;
+  }
+  
+  .bar {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+  
+  .burger-menu .bar:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+  
+  .burger-menu.open .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  .burger-menu.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .burger-menu.open .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  
+  .menu {
+    display: none;
+    position: fixed;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8); /* Start with a slightly smaller scale */
+    opacity: 0; /* Start with 0 opacity */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Add transition for both transform and opacity */
+  }
+  
+  .menu.show-menu {
+    transform: translate(-50%, -50%) scale(1); /* Show the menu with scaling effect */
+    opacity: 1; /* Show the menu with fade-in effect */
+  }
+  
+  .menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menu ul li {
+    padding: 12px 16px;
+  }
+  
+  .menu ul li a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .menu ul li a:hover {
+    background-color: #ddd;
+  }
+  
+  .show-menu {
+    display: block;
+  }
+  
+  .show-overlay {
+    display: block;
+  }

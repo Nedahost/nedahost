@@ -8,7 +8,7 @@
     flex-direction: column;
     justify-content: space-evenly;
     @include a.breakpoint(medium){
-        height: 100vh;
+        height: 100svh;
         padding-bottom: 0; 
     }
 
@@ -95,7 +95,7 @@
     justify-content: space-evenly;
     flex-wrap: nowrap;
     @include a.breakpoint(medium){
-        height: 100vh;
+        height: 100svh;
     }
     h2{
         -webkit-text-stroke: 2px rgba(255, 255, 255, 0.3);

@@ -17,25 +17,7 @@ header{
             #outermenu{
                 display: flex;
                 flex-direction: column;
-/*                .lang{
-                    ul{
-                        display: flex;
-                        flex-direction: row;
-                        justify-content: flex-end;
-                        gap: 6px;
-                        li{
-                            a{
-                                &:hover{
-                                    text-decoration: underline;
-                                    -webkit-text-decoration-color: var(--bluelight-color);  Safari   
-                                    text-decoration-color: var(--bluelight-color);
-                                    text-underline-offset: 4px;
-                                    text-decoration-thickness: 2px;
-                                }
-                            }
-                        }
-                    }
-                }*/
+
 
                 nav{
                    
@@ -55,9 +37,8 @@ header{
         
 
             .readmore {
-                @include a.breakpoint(medium){
-                    width: 30%;
-                }
+                
+
                 display: flex;
                 &::before {
                     content: "\2193";
@@ -91,6 +72,6 @@ header{
 }
 
 .home>header{
-    height: 100vh;
+    height: 100svh;
     padding-bottom: 0;
 }

@@ -19,6 +19,27 @@
 
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
+
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() {
+  const burgerMenu = document.querySelector('.burger-menu');
+  const menu = document.querySelector('.menu');
+  const overlay = document.querySelector('.overlay');
+
+  burgerMenu.addEventListener('click', function() {
+    menu.classList.toggle('show-menu');
+    burgerMenu.classList.toggle('open');
+    overlay.classList.toggle('show-overlay');
+  });
+});
+
+        </script>
+
+
+
+
+
+
         <script type="text/javascript">
             $(document).ready(function() {
     $('.readmore a').on('click', function(event) {
@@ -88,6 +109,8 @@
 
         <!-- Global site tag (gtag.js) - Google Ads: 1013125385 --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1013125385"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-1013125385'); </script>
         <!-- Event snippet for Website traffic conversion page --> <script> gtag('event', 'conversion', {'send_to': 'AW-1013125385/8sGwCIzQjcwDEImijOMD'}); </script> 
+
+        
     </head>
     <body <?php body_class(); ?>>
         <header>
@@ -103,16 +126,33 @@
                 </figure>
                 <div id="outermenu">
 
-                    <nav>
-                        <?php
+                    <!-- <nav>
+                        <?php /*
                         wp_nav_menu(
                                 array(
                                     'theme_location' => 'primary',
                                     'menu_class' => 'dropdown'
                                 )
                         );
-                        ?>
-                    </nav>
+                        */ ?>
+                    </nav> -->
+
+                    <div class="overlay"></div>
+
+                    <div class="burger-menu">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+
+                    <div class="menu">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                    </div>
                 </div>
             </div><!-- flex topheade end -->
             <div class="sectiontitle"><!-- section title start -->

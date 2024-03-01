@@ -7,31 +7,21 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    @include a.breakpoint(medium){
-        height: 100svh;
-        padding-bottom: 0; 
-    }
-
+    height: 100svh;
+    padding-bottom: 0; 
     &__title{
        order: 1;
-       
     }
     &__list{
         order: 2;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         counter-reset: h3;
-        @include a.breakpoint(medium){
-            flex-direction: row;
-            flex-wrap: nowrap;
-            justify-content: space-evenly; 
-        }
+        gap: 20px;
         li{
-            
+            flex: 1;
             text-align: center;
-        @include a.breakpoint(medium){
-            width: 28%;
-        }
+        
             figure{
                 margin: 0px;
                 padding: 0px;
@@ -54,7 +44,7 @@
                     color: var(--linktext-color);
                 }
                 &::before{
-                    counter-increment: h3;                  /* Increment the value of section counter by 1 */
+                    counter-increment: h3;
                     content: "0"counter(h3) '\00a0 \2014';
                     color: var(--bluelight-color);
                 }
@@ -63,7 +53,7 @@
                 line-height: a.em(25);
             }
             .sublisting{
-                padding-bottom: a.em(10);
+                padding-bottom: a.em(10); 
                 li{
                     display: inline;
                     padding: 0 a.em(5);

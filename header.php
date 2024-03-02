@@ -25,13 +25,16 @@
   const burgerMenu = document.querySelector('.burger-menu');
   const menu = document.querySelector('.menu');
   const overlay = document.querySelector('.overlay');
+  const body = document.querySelector('body');
 
   burgerMenu.addEventListener('click', function() {
     menu.classList.toggle('show-menu');
     burgerMenu.classList.toggle('open');
     overlay.classList.toggle('show-overlay');
+    body.classList.toggle('no-scroll'); // Toggle no-scroll class on body
   });
 });
+
 
         </script>
 
@@ -136,7 +139,7 @@
                         );
                         */ ?>
                     </nav> -->
-
+Menu
                     <div class="overlay"></div>
 
                     <div class="burger-menu">

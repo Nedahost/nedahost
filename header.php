@@ -20,20 +20,60 @@
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 
+<<<<<<< HEAD
+        <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const accordionItems = document.querySelectorAll('.accordion-item');
+
+  // Κάνετε το πρώτο accordion-item ανοιχτό
+  const firstAccordionItem = accordionItems[0];
+  const firstTitle = firstAccordionItem.querySelector('.accordion-title');
+  const firstContent = firstAccordionItem.querySelector('.accordion-content');
+
+  firstTitle.classList.add('active');
+  firstContent.classList.add('active');
+
+  accordionItems.forEach(item => {
+    const title = item.querySelector('.accordion-title');
+    const content = item.querySelector('.accordion-content');
+
+    title.addEventListener('click', function() {
+      accordionItems.forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.querySelector('.accordion-content').classList.remove('active');
+          otherItem.querySelector('.accordion-title').classList.remove('active');
+        }
+      });
+      
+      content.classList.toggle('active');
+      title.classList.toggle('active');
+    });
+  });
+});
+
+</script>
+
+
+
+=======
         <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function() {
   const burgerMenu = document.querySelector('.burger-menu');
   const menu = document.querySelector('.menu');
   const overlay = document.querySelector('.overlay');
+  const body = document.querySelector('body');
 
   burgerMenu.addEventListener('click', function() {
     menu.classList.toggle('show-menu');
     burgerMenu.classList.toggle('open');
     overlay.classList.toggle('show-overlay');
+    body.classList.toggle('no-scroll'); // Toggle no-scroll class on body
   });
 });
 
+
         </script>
+>>>>>>> efe429811696fe530b4193aea00d695b420077e6
 
 
 
@@ -136,7 +176,27 @@
                         );
                         */ ?>
                     </nav> -->
+<<<<<<< HEAD
 
+                    <div class="hamburger hamburger--slider-r">
+    <div class="hamburger-box">
+      <div class="hamburger-inner"></div>
+    </div>
+  </div>
+  <div id="navigation">
+    <nav>
+  <?php
+                    wp_nav_menu(
+                        array(
+                            'theme_location' => 'primary',
+                            'menu_class' => 'dropdown'
+                        )
+                    );
+                    ?>
+</nav>
+  </div>
+=======
+Menu
                     <div class="overlay"></div>
 
                     <div class="burger-menu">
@@ -153,6 +213,7 @@
                         <li><a href="#">Contact</a></li>
                     </ul>
                     </div>
+>>>>>>> efe429811696fe530b4193aea00d695b420077e6
                 </div>
             </div><!-- flex topheade end -->
             <div class="sectiontitle"><!-- section title start -->

@@ -9,6 +9,10 @@
     z-index: 998; /* Ensure it's below the menu */
   }
   
+  .no-scroll {
+    overflow: hidden; /* Prevent scrolling */
+  }
+  
   .burger-menu {
     display: block;
     cursor: pointer;

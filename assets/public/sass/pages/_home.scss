@@ -164,7 +164,7 @@
                     font-size: a.rem(20);
                     font-weight: 300;
                     &::before{
-                        counter-increment: li;                  /* Increment the value of section counter by 1 */
+                        counter-increment: li;                 
                         content: "0"counter(li) '\00a0 \2014';
                         color: var(--bluelight-color);
                         font-size: a.rem(25);

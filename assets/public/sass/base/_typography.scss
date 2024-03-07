@@ -1,5 +1,23 @@
 @use '../abstracts/' as a;
-@use './fonts' as f;
+
+@font-face {
+    font-family: 'LEMONMILK-Regular';
+    src: url('../fonts/LEMONMILK-Regular.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/LEMONMILK-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('../fonts/LEMONMILK-Regular.woff2') format('woff2'), /* Modern Browsers */
+        url('../fonts/LEMONMILK-Regular.woff') format('woff'), /* Modern Browsers */
+        url('../fonts/LEMONMILK-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+        url('../fonts/LEMONMILK-Regular.svg') format('svg'); /* Legacy iOS */
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+$second-font:'Roboto Condensed', sans-serif;
+
+$font-lemon: 'LEMONMILK-Regular', sans-serif;
+
 
 h1, 
 h2, 
@@ -13,7 +31,7 @@ h1{
     font-size: clamp(a.rem(28), a.rem(16) + 7vw ,a.rem(200));
     -webkit-text-stroke: a.rem(1) hsla(170, 48%, 50%, 0.3);
     -webkit-text-fill-color: #fff0;
-     font-family: f.$font-lemon;
+     font-family: $font-lemon;
      font-weight: 300; 
     //font-size: clamp(a.rem(28), a.rem(16) + 2vw ,a.rem(40));
     //font-size: clamp(1.75rem, 1rem + 2vw ,2.5rem);
@@ -26,7 +44,7 @@ h2{
     -webkit-text-stroke: a.rem(1) hsla(170, 48%, 50%); 
     -webkit-text-fill-color: #fff0;
     text-transform: uppercase;
-    font-family: f.$font-lemon;
+    font-family: $font-lemon;
     font-weight: 300;
 }
 

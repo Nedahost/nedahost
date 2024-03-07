@@ -1,19 +1,4 @@
-
-
 @use './base';
 @use './components';
 @use './layouts'; 
 @use './pages';
-
-
-@font-face {
-    font-family: 'LEMONMILK-Regular';
-    src: url('../../fonts/LEMONMILK-Regular.eot'); /* IE9 Compat Modes */
-    src: url('../../fonts/LEMONMILK-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-        url('../../fonts/LEMONMILK-Regular.woff2') format('woff2'), /* Modern Browsers */
-        url('../../fonts/LEMONMILK-Regular.woff') format('woff'), /* Modern Browsers */
-        url('../../fonts/LEMONMILK-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
-        url('../../fonts/LEMONMILK-Regular.svg') format('svg'); /* Legacy iOS */
-    font-weight: normal;
-    font-style: normal;
-}

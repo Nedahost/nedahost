@@ -20,7 +20,7 @@
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 
-<<<<<<< HEAD
+
         <script>
 document.addEventListener('DOMContentLoaded', function() {
   const accordionItems = document.querySelectorAll('.accordion-item');
@@ -52,31 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 </script>
-
-
-
-=======
-        <script type="text/javascript">
-            document.addEventListener('DOMContentLoaded', function() {
-  const burgerMenu = document.querySelector('.burger-menu');
-  const menu = document.querySelector('.menu');
-  const overlay = document.querySelector('.overlay');
-  const body = document.querySelector('body');
-
-  burgerMenu.addEventListener('click', function() {
-    menu.classList.toggle('show-menu');
-    burgerMenu.classList.toggle('open');
-    overlay.classList.toggle('show-overlay');
-    body.classList.toggle('no-scroll'); // Toggle no-scroll class on body
-  });
-});
-
-
-        </script>
->>>>>>> efe429811696fe530b4193aea00d695b420077e6
-
-
-
 
 
 
@@ -176,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         );
                         */ ?>
                     </nav> -->
-<<<<<<< HEAD
+
 
                     <div class="hamburger hamburger--slider-r">
     <div class="hamburger-box">
@@ -195,25 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     ?>
 </nav>
   </div>
-=======
-Menu
-                    <div class="overlay"></div>
 
-                    <div class="burger-menu">
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                    </div>
-
-                    <div class="menu">
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                    </div>
->>>>>>> efe429811696fe530b4193aea00d695b420077e6
                 </div>
             </div><!-- flex topheade end -->
             <div class="sectiontitle"><!-- section title start -->

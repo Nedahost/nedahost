@@ -20,38 +20,25 @@
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() {
+  const burgerMenu = document.querySelector('.burger-menu');
+  const menu = document.querySelector('.menu');
+  const overlay = document.querySelector('.overlay');
 
-        <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const accordionItems = document.querySelectorAll('.accordion-item');
-
-  // Κάνετε το πρώτο accordion-item ανοιχτό
-  const firstAccordionItem = accordionItems[0];
-  const firstTitle = firstAccordionItem.querySelector('.accordion-title');
-  const firstContent = firstAccordionItem.querySelector('.accordion-content');
-
-  firstTitle.classList.add('active');
-  firstContent.classList.add('active');
-
-  accordionItems.forEach(item => {
-    const title = item.querySelector('.accordion-title');
-    const content = item.querySelector('.accordion-content');
-
-    title.addEventListener('click', function() {
-      accordionItems.forEach(otherItem => {
-        if (otherItem !== item) {
-          otherItem.querySelector('.accordion-content').classList.remove('active');
-          otherItem.querySelector('.accordion-title').classList.remove('active');
-        }
-      });
-      
-      content.classList.toggle('active');
-      title.classList.toggle('active');
-    });
+  burgerMenu.addEventListener('click', function() {
+    menu.classList.toggle('show-menu');
+    burgerMenu.classList.toggle('open');
+    overlay.classList.toggle('show-overlay');
+    body.classList.toggle('no-scroll'); // Toggle no-scroll class on body
   });
 });
 
-</script>
+
+        </script>
+
+
+
 
 
 
@@ -152,25 +139,22 @@ document.addEventListener('DOMContentLoaded', function() {
                         */ ?>
                     </nav> -->
 
+                    <div class="overlay"></div>
 
-                    <div class="hamburger hamburger--slider-r">
-    <div class="hamburger-box">
-      <div class="hamburger-inner"></div>
-    </div>
-  </div>
-  <div id="navigation">
-    <nav>
-  <?php
-                    wp_nav_menu(
-                        array(
-                            'theme_location' => 'primary',
-                            'menu_class' => 'dropdown'
-                        )
-                    );
-                    ?>
-</nav>
-  </div>
+                    <div class="burger-menu">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
 
+                    <div class="menu">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                    </div>
                 </div>
             </div><!-- flex topheade end -->
             <div class="sectiontitle"><!-- section title start -->

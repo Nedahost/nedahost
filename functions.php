@@ -117,7 +117,7 @@ function home_body_class($classes) {
 add_filter( 'body_class', 'home_body_class' );
 
 
-
+/*
 function add_my_submenu() {
     add_menu_page(
         'Framework',          // page title 
@@ -195,3 +195,5 @@ function my_menu_page() {
     echo '</form>';
     echo '</div>';
 }
+
+*/

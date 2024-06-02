@@ -162,140 +162,20 @@
             </div><!-- conetent contact end -->
             <div class="outerfaq"><!-- outer faq stat -->
                 <div class="accordion"><!-- accordion start -->
-                    <div class="accordion-item">
-                        <div class="accordion-title">
-                            <span class="title-text">Ποιες υπηρεσίες προσφέρετε;</span>
-                            <span class="accordion-icon"></span>
-                        </div>
-                        <div class="accordion-content">
-                                <ul>
-                                    <li>
-                                        <b>Σχεδιασμός και υλοποίηση ιστοσελίδων:</b> 
-                                        Δημιουργία στατικών ή δυναμικών ιστοσελίδων, e-shop, blogs, forums, landing pages, κ.α.
-                                    </li>
-                                    <li>
-                                        <b>Digital Marketing:</b> 
-                                        SEO, SEM, Social Media Marketing, Email Marketing, PPC campaigns, κ.α.
-                                    </li>
-                                    <li>
-                                        <b>Συντήρηση και υποστήριξη ιστοσελίδων:</b>
-                                        Ενημερώσεις περιεχομένου, ασφάλεια, backups, βελτιστοποίηση, κ.α.
-                                    </li>
-                                    <li>
-                                        <b>Συμβουλευτικές υπηρεσίες:</b> 
-                                        Ανάλυση αγοράς, στρατηγική online παρουσίας, επιλογή κατάλληλων τεχνολογιών, κ.α.
-                                    </li>
-                                </ul>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-title">
-                            <span class="title-text">Ποιες τεχνολογίες χρησιμοποιείτε στις ιστοσελίδες σας;</span>
-                            <span class="accordion-icon"></span>
-                        </div>
-                        <div class="accordion-content">
-                            <ul>
-                                <li>
-                                    <b>Γλώσσες προγραμματισμού:</b> 
-                                    HTML, CSS, JavaScript, PHP, Python, Java, κ.α.
-                                </li>
-                                <li>
-                                    <b>Frameworks:</b> 
-                                    Laravel, Django, React, Angular, Vue.js, κ.α.
-                                </li>
-                                <li>
-                                    <b>Συστήματα διαχείρισης περιεχομένου (CMS):</b>
-                                    WordPress, Drupal, Joomla, Magento, Shopify, κ.α.
-                                </li>
-                                <li>
-                                    <b>Databases:</b>
-                                    MySQL, PostgreSQL, MongoDB, κ.α.
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-title">
-                            <span class="title-text">Ποια είναι η διαδικασία εργασίας σας;</span>
-                            <span class="accordion-icon"></span>
-                        </div>
-                        <div class="accordion-content">
-                            <ul>
-                                <li>
-                                    <b>Συνάντηση:</b> 
-                                    Συζητάμε τις ανάγκες και τους στόχους σας.
-                                </li>
-                                <li>
-                                    <b>Προσφορά:</b> 
-                                    Σας αποστέλλουμε μια λεπτομερή προσφορά με βάση τις απαιτήσεις σας
-                                </li>
-                                <li>
-                                    <b>Σχεδιασμός:</b> 
-                                    Δημιουργούμε mockups και wireframes για να οπτικοποιήσουμε την ιστοσελίδα
-                                </li>
-                                <li>
-                                    <b>Ανάπτυξη:</b> 
-                                    Υλοποιούμε την ιστοσελίδα, τηρώντας όλα τα πρότυπα ποιότητας.
-                                </li>
-                                <li>
-                                    <b>Έλεγχοι:</b> 
-                                    Διεξάγουμε ελέγχους για να διασφαλίσουμε την ομαλή λειτουργία της ιστοσελίδας.
-                                </li>
-                                <li>
-                                    <b>Λανσάρισμα:</b> 
-                                    Θέτουμε την ιστοσελίδα online.
-                                </li>
-                                <li>
-                                    <b>Υποστήριξη:</b> 
-                                    Προσφέρουμε συνεχή υποστήριξη και βελτιστοποίηση.
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-title">
-                            <span class="title-text">Ποιος είναι ο χρόνος ανάπτυξης μιας ιστοσελίδας;</span>
-                            <span class="accordion-icon"></span>
-                        </div>
-                        <div class="accordion-content">
-                            <p>
-                            Ο χρόνος ανάπτυξης εξαρτάται από την πολυπλοκότητα της ιστοσελίδας, τις απαιτήσεις σας και τη διαθεσιμότητα πόρων.
-                             Μια απλή ιστοσελίδα μπορεί να ολοκληρωθεί σε λίγες ημέρες, ενώ μια πιο σύνθετη μπορεί να χρειαστεί έως και αρκετούς μήνες.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-title">
-                            <span class="title-text">Ποιες είναι οι τιμές σας;</span>
-                            <span class="accordion-icon"></span>
-                        </div>
-                        <div class="accordion-content">
-                            <p>
-                            Οι τιμές μας εξαρτώνται από τις υπηρεσίες που θα επιλέξετε, την πολυπλοκότητα του έργου και τον χρόνο ανάπτυξης. 
-                            Σας προσφέρουμε ανταγωνιστικές τιμές και προσαρμοσμένα πακέτα για να καλύψουμε τις ανάγκες σας.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-title">
-                            <span class="title-text">Προσφέρετε υποστήριξη μετά την ολοκλήρωση του έργου;</span>
-                            <span class="accordion-icon"></span>
-                        </div>
-                        <div class="accordion-content">
-                            <p>
-                            Ναι, προσφέρουμε διάφορα πακέτα υποστήριξης για να διασφαλίσουμε την ομαλή λειτουργία και την ασφάλεια της ιστοσελίδας σας.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-title">
-                            <span class="title-text">Πώς μπορώ να επικοινωνήσω μαζί σας;</span>
-                            <span class="accordion-icon"></span>
-                        </div>
-                        <div class="accordion-content">
-                            <p>Μπορείτε να επικοινωνήσετε μαζί μας μέσω της ιστοσελίδας μας, email, τηλεφώνου ή social media.</p>
-                        </div>
-                    </div>
+                    <?php
+                        $faq_items = get_option('nedahost_faq_items', array());
+                        foreach ($faq_items as $index => $item) :
+                        ?>
+                            <div class="accordion-item">
+                                <div class="accordion-title">
+                                    <span class="title-text"><?php echo esc_html($item['question']); ?></span>
+                                    <span class="accordion-icon"></span>
+                                </div>
+                                <div class="accordion-content">
+                                    <?php echo wp_kses_post($item['answer']); ?>
+                                </div>
+                            </div>
+                    <?php endforeach; ?>
                 </div><!-- accordion end -->
             </div><!-- outer faq end-->
         </section><!-- outer contact end -->

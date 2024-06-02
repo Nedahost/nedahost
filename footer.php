@@ -65,13 +65,15 @@ if (hamburgers.length > 0) {
 
   </script>
 
-     <script>
+<script>
 document.addEventListener('DOMContentLoaded', function() {
     var accordionTitles = document.getElementsByClassName('accordion-title');
     for (var i = 0; i < accordionTitles.length; i++) {
         accordionTitles[i].addEventListener('click', function() {
             var questionText = this.querySelector('.title-text').textContent;
-            ga('send', 'event', 'FAQ Accordion', 'Click', questionText);
+            gtag('event', 'faq_accordion_click', {
+                'question_text': questionText
+            });
         });
     }
 });

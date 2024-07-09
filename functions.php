@@ -39,6 +39,7 @@ function nedahost_setup(){
     
     
     add_theme_support('post-thumbnails');
+    add_theme_support('title-tag');
     
     // Menu 
     register_nav_menus(array(
@@ -115,85 +116,3 @@ function home_body_class($classes) {
 }
 
 add_filter( 'body_class', 'home_body_class' );
-
-
-/*
-function add_my_submenu() {
-    add_menu_page(
-        'Framework',          // page title 
-        'Framework',          // menu title
-        'manage_options',     // capability
-        'my-menu-slug',       // menu slug
-        'my_menu_page',       // function that will render its output
-        '',                   // link to the icon that will be displayed in the sidebar
-        2                     // position of the menu option
-    );
-}
-add_action('admin_menu', 'add_my_submenu');
-
-
-function my_menu_page() {
-    // Check if form is submitted
-    if (isset($_POST['submit'])) {
-        // Get the submitted data
-        $title = sanitize_text_field($_POST['title']);
-        $content = $_POST['content']; // No need for sanitization as wp_editor handles this
-        $meta_title = sanitize_text_field($_POST['meta_title']);
-        $meta_description = wp_kses_post($_POST['meta_description']); // Allow HTML in Meta Description
-
-        // Save the data or do something else with it
-        // For example, you can save it in the options table:
-        update_option('custom_title', $title);
-        update_option('custom_content', $content);
-        update_option('custom_meta_title', $meta_title);
-        update_option('custom_meta_description', $meta_description);
-
-        echo '<div class="updated"><p>Data saved successfully!</p></div>';
-    }
-
-    // Get the existing data
-    $existing_title = get_option('custom_title');
-    $existing_content = get_option('custom_content');
-    $existing_meta_title = get_option('custom_meta_title');
-    $existing_meta_description = get_option('custom_meta_description');
-
-    echo '<div class="wrap">';
-    echo '<h2>Custom Menu Page</h2>';
-
-    echo '<form method="post" action="">';
-    echo '<h3>Περιεχόμενο αρχικής σελίδας</h3>';
-    echo '<label for="title">Title:</label>';
-    echo '<input type="text" id="title" name="title" value="' . esc_attr($existing_title) . '"><br>';
-    echo '<label for="content">Content:</label>';
-    echo '<div class="wp-editor">';
-    wp_editor($existing_content, 'content', array(
-        'textarea_name' => 'content',
-        'textarea_rows' => 10,
-        'media_buttons' => true,
-        'teeny' => false,
-        'tinymce' => true,
-    ));
-    echo '</div>';
-
-    echo '<h3>Meta tags</h3>';
-    // Separate each Meta tags field with its own title
-    echo '<label for="meta_title">Meta Title:</label>';
-    echo '<input type="text" id="meta_title" name="meta_title" value="' . esc_attr($existing_meta_title) . '" style="display: block; width: 100%; margin-bottom: 10px;"><br>';
-
-    echo '<label for="meta_description">Meta Description:</label>';
-    echo '<div class="wp-editor">';
-    wp_editor($existing_meta_description, 'meta_description', array(
-        'textarea_name' => 'meta_description',
-        'textarea_rows' => 4,
-        'media_buttons' => false,
-        'teeny' => true,
-        'tinymce' => true,
-    ));
-    echo '</div>';
-
-    echo '<input type="submit" name="submit" value="Save">';
-    echo '</form>';
-    echo '</div>';
-}
-
-*/

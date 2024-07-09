@@ -12,7 +12,6 @@
         <meta charset="<?php bloginfo( 'charset' ); ?>" /> 
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title><?php wp_title( '|', true, 'right' ); ?></title>
        
         <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet"> 
         <?php wp_head(); ?>
@@ -56,7 +55,7 @@
                 <h1 class="headtitle">NEDAHOST</h1>
                 <span>a digital agency for web solutions</span>
             <?php }elseif(is_page()){ ?>
-                <h1><?php the_title(); ?></h1>
+                <h1><?php echo esc_html( get_the_title() ); ?></h1>
                 <p>
                   
                 </p>

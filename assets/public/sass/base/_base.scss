@@ -19,21 +19,8 @@ html{
 
 
 body{
-    background-color: var(--background-color);
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
     margin: 0px;
     padding: 0px;
-    font-family: 'Manrope', sans-serif;
-    font-size: var(--fs-400);
-    font-style: normal;
 }
-
-main{
-    background: var(--white-color);
-}
-
-// .wrapper{
-//     margin: 0 auto;
-//     padding: 0 3%;
-//     max-width: 1600px;
-//     width: 100%;
-// }

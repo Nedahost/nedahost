@@ -1,5 +1,16 @@
 @use '../abstracts' as a;
 
+.services{
+    &__title{
+        text-transform: uppercase;
+        h3{
+            font-size: 300px;
+            color: var(--white-color);
+            font-weight: 400;
+        }
+    }
+}
+
 
 .outerservices{
   

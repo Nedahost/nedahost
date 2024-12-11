@@ -19,8 +19,14 @@
     </head>
     <body <?php body_class(); ?>>
         <header>
-            <div class="text">
-                A web design and development agency in Athens
-            </div>
+            <div class="container"><!-- container start -->
+                <div class="text">
+                    A web design and development 
+                    agency in Athens
+                </div>
+                <div class="logo"><!-- logo start -->
+                    <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/logo.svg" alt="Nedahost">
+                </div><!-- logo end -->
+            </div><!-- container end -->
         </header>
         <main>

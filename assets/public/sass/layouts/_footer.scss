@@ -1,8 +1,9 @@
 @use '../abstracts' as a;
 
 footer{
-    color: var(--black-color);
+    position: relative;
+    z-index: 1; /* Ίδιο z-index με το header */
+    background: var(--black-color);
     color: var(--white-color);
-    width: 100%;
-    min-height: 100vh;
+    padding: 20px 64px;
 }

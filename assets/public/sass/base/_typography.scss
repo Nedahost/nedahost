@@ -1,24 +1,5 @@
 @use '../abstracts/' as a;
 
-@font-face {
-    font-family: 'LEMONMILK-Regular';
-    src: url('../fonts/LEMONMILK-Regular.eot'); /* IE9 Compat Modes */
-    src: url('../fonts/LEMONMILK-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-        url('../fonts/LEMONMILK-Regular.woff2') format('woff2'), /* Modern Browsers */
-        url('../fonts/LEMONMILK-Regular.woff') format('woff'), /* Modern Browsers */
-        url('../fonts/LEMONMILK-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
-        url('../fonts/LEMONMILK-Regular.svg') format('svg'); /* Legacy iOS */
-    font-weight: normal;
-    font-style: normal;
-}
-
-
-
-$second-font:'Roboto Condensed', sans-serif;
-
-$font-lemon: 'LEMONMILK-Regular', sans-serif;
-
-
 h1, 
 h2, 
 h3 {
@@ -27,47 +8,18 @@ h3 {
     margin-top: 0;
 }
  
-h1{
-    font-size: clamp(a.rem(28), a.rem(16) + 7vw ,a.rem(200));
-    -webkit-text-stroke: a.rem(1) hsla(170, 48%, 50%, 0.3);
-    -webkit-text-fill-color: #fff0;
-     font-family: $font-lemon;
-     font-weight: 300; 
-    //font-size: clamp(a.rem(28), a.rem(16) + 2vw ,a.rem(40));
-    //font-size: clamp(1.75rem, 1rem + 2vw ,2.5rem);
-   
-}
-
-h2{
-    //font-size: clamp(a.rem(28), 0.875rem + 1.5vw ,2.25rem);
-    font-size: clamp(a.rem(40), a.rem(16) + 4vw ,a.rem(93));
-    -webkit-text-stroke: a.rem(1) hsla(170, 48%, 50%); 
-    -webkit-text-fill-color: #fff0;
-    text-transform: uppercase;
-    font-family: $font-lemon;
-    font-weight: 300;
-}
-
-.spanline{
-    font-size: a.rem(22);
-    &::before{
-        content: '\2015';
-        color: var(--bluelight-color);
-        font-weight: bold;
-        padding-right: a.em(5);
-    }
-}
-
-p{
-    margin-top: 0;
-    font-size: a.rem(16); 
+h3{
+    font-size: clamp(3rem, 17vw + 1rem, 20rem);
+    color: var(--white-color);
+    font-weight: 400;
+    text-align: center;
 }
 
 a, 
 a:visited, 
 a:active{
     text-decoration: none;
-    color: var(--linktext-color);
+    color: var(--white-color);
 }
 
 figure{

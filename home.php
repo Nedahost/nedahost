@@ -43,7 +43,7 @@
 
     <section class="work"><!-- work start -->
         <div class="work__title"><!-- work title start -->
-            <h2>WORK</h2>
+            <h3>WORK</h3>
         </div><!-- work title end -->
         
     </section><!-- work end -->

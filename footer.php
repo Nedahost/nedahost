@@ -1,7 +1,8 @@
     </main>
     <footer>
     <div class="letsstart">
-        Let's Start
+            Let's <br />
+            Start
     </div>
     <div class="footercontacts">
         <ul>
@@ -13,8 +14,8 @@
             <li>+30 697 5686 473</li>
         </ul>
         <ul>
-            <li>Facebook</li>
-            <li>Instagram</li>
+            <li><a href="http://">Facebook</a></li>
+            <li><a href="http://">Instagram</a></li>
         </ul>
     </div>
     </footer>

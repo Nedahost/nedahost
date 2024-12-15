@@ -45,7 +45,70 @@
         <div class="work__title"><!-- work title start -->
             <h3>WORK</h3>
         </div><!-- work title end -->
-        
+        <div class="container"><!-- container start -->
+            <div class="listprojects"><!-- list projects start -->
+                <ul>
+                    <li>
+                        <a href="http://">
+                            <figure>
+                                <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/opson.jpg" alt=""> 
+                                <figcaption>
+                                    Opson website
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </li>
+                    <li>
+                        <ul>
+                            <li>
+                                <a href="http://">
+                                    <figure>
+                                        <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/opson.jpg" alt=""> 
+                                        <figcaption>
+                                            Opson website
+                                        </figcaption>
+                                    </figure>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://">
+                                    <figure>
+                                        <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/opson.jpg" alt=""> 
+                                        <figcaption>
+                                            Opson website
+                                        </figcaption>
+                                    </figure>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul>
+                            <li>
+                                <a href="http://">
+                                    <figure>
+                                        <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/opson.jpg" alt=""> 
+                                        <figcaption>
+                                            Opson website
+                                        </figcaption>
+                                    </figure>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://">
+                                    <figure>
+                                        <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/opson.jpg" alt=""> 
+                                        <figcaption>
+                                            Opson website
+                                        </figcaption>
+                                    </figure>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- list projects end -->
+        </div><!-- container end -->
     </section><!-- work end -->
 
     <section class="outercontact"><!-- outer contact star -->

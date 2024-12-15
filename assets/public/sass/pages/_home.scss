@@ -8,3 +8,34 @@
         }
     }
 }
+
+
+.container{
+    padding: 0 64px 64px;
+}
+
+.work{
+    .listprojects{
+        padding: 0 100px;
+        ul{
+            li{
+                a{
+                    figure{
+                        img{
+                            border-radius: 30px;
+                            width: 100%;
+                            height: auto;
+                        }
+                    }
+                }
+                ul{
+                    display: flex;
+                    gap: 38px;
+                    li{
+                        
+                    }
+                }
+            }
+        }
+    }
+}

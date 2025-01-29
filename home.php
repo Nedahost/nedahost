@@ -1,9 +1,16 @@
 <?php get_header(); ?>
 
     <section class="outerwelcome"><!-- outer welcome start -->
-    Η Nedahost ιδρύθηκε το 2016, είναι μια εταιρεία σχεδιασμού και ανάπτυξης ιστοσελίδων. Παρόλο το μικρό 
-    διάστημα λειτουργίας μας, διαθέτουμε πάνω από 10 χρόνια εμπειρία στο προγραμματισμό , 
-    τη σχεδίαση και τη προώθηση ιστοσελίδων, παρέχοντας ολοκληρωμένες λύσεις για κάθε επιχείρηση.
+        <div class="container"><!-- container start -->
+            <div class="hometext">
+                <div class="hometext__title"><!-- title start -->
+                    Ποιοι είμαστε
+                </div><!-- title end -->
+                <div class="hometext__content"><!-- content start -->
+                Η Nedahost ιδρύθηκε το 2016, είναι μια εταιρεία σχεδιασμού και ανάπτυξης ιστοσελίδων. Παρόλο το μικρό διάστημα λειτουργίας μας, διαθέτουμε πάνω από 10 χρόνια εμπειρία στο προγραμματισμό, τη σχεδίαση και τη προώθηση ιστοσελίδων, παρέχοντας ολοκληρωμένες λύσεις για κάθε επιχείρηση.
+                </div><!-- content end -->
+            </div>
+        </div><!-- container end -->
     </section><!-- outer welcome end -->
 
     <section class="services"><!-- services start -->
@@ -96,12 +103,9 @@
                             </li>
                             <li>
                                 <a href="http://">
-                                    <figure>
-                                        <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/opson.jpg" alt=""> 
-                                        <figcaption>
-                                            Opson website
-                                        </figcaption>
-                                    </figure>
+                                    <div class="right-box">
+                                        <span class="plus-symbol">+</span>
+                                    </div>
                                 </a>
                             </li>
                         </ul>

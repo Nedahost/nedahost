@@ -1,5 +1,33 @@
 @use '../abstracts' as a;
 
+
+.outerwelcome{
+    padding: 165px 0 100px;
+    .hometext{
+        color: var(--white-color);
+        display: flex;
+        align-items: flex-start;
+        gap: 299px; 
+        &__title{
+            font-size: 20px;
+            &::before{
+                content: "";
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                background-color: var(--white-color);
+                border-radius: 50%;
+                margin-right: 4px;
+                vertical-align: middle;
+            }
+        }
+        &__content{
+            font-size: 35px;
+            max-width: 936px;
+        }
+    }
+}
+
 .services{
     &__title{
         text-transform: uppercase;
@@ -34,8 +62,24 @@
                 ul{
                     display: flex;
                     gap: 38px;
+                    padding: 94px 0;
                     li{
-                        
+                        width: 50%;
+                        .right-box {
+                            height: 87%; /* Ύψος του κουτιού */
+                            border: 1px solid var(--white-color); /* Περίγραμμα */
+                            border-radius: 10px; /* Στρογγυλεμένες γωνίες */
+                            display: flex; /* Flexbox για κεντράρισμα */
+                            justify-content: center; /* Οριζόντια στοίχιση του "+" */
+                            align-items: center; /* Κάθετη στοίχιση του "+" */
+                            background-color: transparent; /* Φόντο του κουτιού */
+                          }
+                          
+                          .plus-symbol {
+                            color: var(--white-color); /* Χρώμα του "+" */
+                            font-size: 40px; /* Μέγεθος του "+" */
+                            font-weight: bold; /* Πάχος γραμματοσειράς */
+                          }
                     }
                 }
             }

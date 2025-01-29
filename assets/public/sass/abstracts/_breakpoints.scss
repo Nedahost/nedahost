@@ -1,36 +1,76 @@
-@use './functions' as f;
+@use 'functions' as f;
 
-// 280px , 700px  , 900px , 1440px
-$breakpoints-up: (
-    "small" : 280px,
-    "medium" :576px,
-    "xmedium": 768px, 
-    "large" : 992px,
-    "xlarge" :1200px,
-    "xxlarge": 1400px,
-    "xxxlarge": 1680px
+// Breakpoints Map
+// xs: Για πολύ μικρές συσκευές (κινητά σε portrait mode)
+// sm: Για μικρές συσκευές (μεγάλα κινητά)
+// md: Για tablets σε portrait mode
+// lg: Για tablets σε landscape και μικρές οθόνες υπολογιστών
+// xl: Για desktop monitors
+// xxl: Για μεγάλες οθόνες
+// xxxl: Για πολύ μεγάλες οθόνες και 4k displays
+$breakpoints: (
+  "xs": 280px,    // Μικρά κινητά
+  "sm": 576px,    // Μεγάλα κινητά
+  "md": 768px,    // Tablets - portrait
+  "lg": 992px,    // Tablets - landscape / μικρές οθόνες
+  "xl": 1200px,   // Desktop
+  "xxl": 1400px,  // Μεγάλες οθόνες
+  "xxxl": 1680px, // Ultra-wide / 4K
+  "xmedium": 768px,
+  "mlarge": 1024px,
+  "large": 992px
 );
 
-
-//699.98px , 899.98px, 1439.98px
-$breakpoints-down: (
-    "small": f.em(319.98),
-    "medium":f.em(575.98),
-    "xmedium" : f.em(767.98),
-    "large": f.em(991.98),
-    "xlarge" : f.em(1199.98), 
-    "xxlarge" : f.em(1399.98)
-);
-
-@mixin  breakpoint($size) {
-    @media (min-width: map-get($breakpoints-up, $size)){
-        @content;
+// Mixin για min-width media queries
+@mixin breakpoint-up($size) {
+  @if map-has-key($breakpoints, $size) {
+    @media (min-width: #{map-get($breakpoints, $size)}) {
+      @content;
     }
+  } @else {
+    @warn "Το breakpoint '#{$size}' δεν υπάρχει στο $breakpoints map.";
+  }
 }
 
+// Mixin για max-width media queries
 @mixin breakpoint-down($size) {
-    @media(max-width:map-get($breakpoints-down, $size)){
-        @content;
+  @if map-has-key($breakpoints, $size) {
+    @media (max-width: #{map-get($breakpoints, $size) - 1px}) {
+      @content;
     }
-    
+  } @else {
+    @warn "Το breakpoint '#{$size}' δεν υπάρχει στο $breakpoints map.";
+  }
+}
+
+// Mixin για min-width και max-width media queries
+@mixin breakpoint-between($lower, $upper) {
+  @if map-has-key($breakpoints, $lower) and map-has-key($breakpoints, $upper) {
+    @media (min-width: #{map-get($breakpoints, $lower)}) and (max-width: #{map-get($breakpoints, $upper) - 1px}) {
+      @content;
+    }
+  } @else {
+    @warn "Ένα ή και τα δύο breakpoints '#{$lower}' και '#{$upper}' δεν υπάρχουν στο $breakpoints map.";
+  }
+}
+
+// Νέο mixin για orientation
+@mixin orientation($direction) {
+  @if $direction == 'portrait' or $direction == 'landscape' {
+    @media (orientation: #{$direction}) {
+      @content;
+    }
+  } @else {
+    @warn "Το orientation πρέπει να είναι 'portrait' ή 'landscape'";
+  }
+}
+
+// Νέο mixin για retina displays
+@mixin retina {
+  @media 
+  (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+    @content;
+  }
 }

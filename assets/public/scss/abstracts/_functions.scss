@@ -1,0 +1,41 @@
+@use 'sass:math';
+
+// Μετατροπή pixels σε em
+@function em($pixels, $context: 16) {
+  @if type-of($pixels) == "number" and unitless($pixels) {
+    @return math.div($pixels, $context) * 1em;
+  } @else if type-of($pixels) == "number" and unit($pixels) == "px" {
+    @return math.div($pixels, $context * 1px) * 1em;
+  } @else {
+    @error "Η παράμετρος $pixels πρέπει να είναι αριθμός με ή χωρίς μονάδα px στη συνάρτηση em().";
+  }
+}
+
+// Μετατροπή pixels σε rem
+@function rem($pixels, $context: 16) {
+  @if type-of($pixels) == "number" and unitless($pixels) {
+    @return math.div($pixels, $context) * 1rem;
+  } @else if type-of($pixels) == "number" and unit($pixels) == "px" {
+    @return math.div($pixels, $context * 1px) * 1rem;
+  } @else {
+    @error "Η παράμετρος $pixels πρέπει να είναι αριθμός με ή χωρίς μονάδα px στη συνάρτηση rem().";
+  }
+}
+
+// Υπολογισμός ποσοστών
+@function percentage-calc($target, $container) {
+  @if type-of($target) == "number" and type-of($container) == "number" {
+    @return math.div($target, $container) * 100%;
+  } @else {
+    @error "Και οι δύο παράμετροι πρέπει να είναι αριθμοί στη συνάρτηση percentage-calc().";
+  }
+}
+
+// Υπολογισμός aspect ratio
+@function aspect-ratio($width, $height) {
+  @if type-of($width) == "number" and type-of($height) == "number" {
+    @return math.div($height, $width) * 100%;
+  } @else {
+    @error "Και οι δύο παράμετροι πρέπει να είναι αριθμοί στη συνάρτηση aspect-ratio().";
+  }
+}

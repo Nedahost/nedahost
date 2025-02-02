@@ -1,24 +1,19 @@
 @use 'functions' as f;
 
 // Breakpoints Map
-// xs: Για πολύ μικρές συσκευές (κινητά σε portrait mode)
-// sm: Για μικρές συσκευές (μεγάλα κινητά)
-// md: Για tablets σε portrait mode
-// lg: Για tablets σε landscape και μικρές οθόνες υπολογιστών
-// xl: Για desktop monitors
-// xxl: Για μεγάλες οθόνες
-// xxxl: Για πολύ μεγάλες οθόνες και 4k displays
+// xs: Extra small devices (small phones)
+// sm: Small devices (large phones)
+// md: Medium devices (tablets)
+// lg: Large devices (laptops/desktops)
+// xl: Extra large devices (large desktops)
+// xxl: Ultra large devices (4k, ultra-wide)
 $breakpoints: (
-  "xs": 280px,    // Μικρά κινητά
-  "sm": 576px,    // Μεγάλα κινητά
-  "md": 768px,    // Tablets - portrait
-  "lg": 992px,    // Tablets - landscape / μικρές οθόνες
-  "xl": 1200px,   // Desktop
-  "xxl": 1400px,  // Μεγάλες οθόνες
-  "xxxl": 1680px, // Ultra-wide / 4K
-  "xmedium": 768px,
-  "mlarge": 1024px,
-  "large": 992px
+  "xs": 320px,    // Small phones
+  "sm": 576px,    // Large phones
+  "md": 768px,    // Tablets
+  "lg": 1024px,   // Laptops/Small desktops
+  "xl": 1200px,   // Large desktops
+  "xxl": 1400px   // Ultra-wide/4K displays
 );
 
 // Mixin για min-width media queries
@@ -54,7 +49,7 @@ $breakpoints: (
   }
 }
 
-// Νέο mixin για orientation
+// Mixin για orientation
 @mixin orientation($direction) {
   @if $direction == 'portrait' or $direction == 'landscape' {
     @media (orientation: #{$direction}) {
@@ -65,12 +60,11 @@ $breakpoints: (
   }
 }
 
-// Νέο mixin για retina displays
+// Mixin για retina displays
 @mixin retina {
   @media 
   (-webkit-min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi),
-  (min-resolution: 2dppx) {
+  (min-resolution: 192dpi) {
     @content;
   }
 }

@@ -1,0 +1,70 @@
+html{
+    font-size: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    height: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+}
+
+*, *::before , *::after{
+    -moz-box-sizing: inherit;
+    -ms-box-sizing: inherit;
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+} 
+
+
+body{
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    margin: 0px;
+    padding: 0px;
+    min-height: 100vh;
+    line-height: 1.5;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+}
+
+/* Βελτίωση προσβασιμότητας για focus */
+:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+}
+
+/* Βελτίωση προσβασιμότητας για reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Βελτίωση απόδοσης για animations */
+* {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* Διόρθωση για iOS tap highlight */
+input,
+textarea,
+button,
+select,
+a {
+    -webkit-tap-highlight-color: transparent;
+}

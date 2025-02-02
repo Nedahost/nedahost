@@ -1,0 +1,24 @@
+// Χρώματα χάρτης (map)
+$colors: (
+    "background": hsl(0, 0%, 100%),
+    "white": hsl(0, 0%, 100%),
+    "black": hsl(0, 0%, 0%), 
+    "grey": hsl(0, 0%, 20%),
+    "light-grey": hsl(240, 1%, 51%)
+
+    // Χρώματα συστήματος
+    "success": hsl(120, 60%, 50%),
+    "error": hsl(0, 80%, 50%),
+    "warning": hsl(40, 90%, 50%),
+    "info": hsl(200, 70%, 50%)
+);
+    
+
+// Function για πρόσβαση στα χρώματα
+@function color($name) {
+    @if map-has-key($colors, $name) {
+      @return map-get($colors, $name);
+    } @else {
+      @error "Το χρώμα '#{$name}' δεν υπάρχει στον χάρτη $colors.";
+    }
+  }

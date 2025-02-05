@@ -18,8 +18,19 @@
         
     </head>
     <body <?php body_class(); ?>>
-        <header>
+        <header class="home-header">
+            <nav>
+                <?php
+                wp_nav_menu(
+                    array(
+                        'theme_location' => 'primary',
+                        'menu_class' => 'dropdown'
+                    )
+                );
+                ?>
+            </nav>
             <div class="container"><!-- container start -->
+
                 <div class="text">
                     A web design and development 
                     agency in Athens

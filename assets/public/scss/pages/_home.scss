@@ -7,23 +7,21 @@
         color: var(--white-color);
         display: flex;
         align-items: flex-start;
-        gap: 299px; 
+        gap: 180px; 
         &__title{
             font-size: 20px;
+            white-space: nowrap;
+            margin-top: 5px;
             &::before{
-                content: "";
-                display: inline-block;
-                width: 10px;
-                height: 10px;
-                background-color: var(--white-color);
-                border-radius: 50%;
-                margin-right: 4px;
-                vertical-align: middle;
+                content: "•";
+                font-size: 24px;
+                margin-right: 10px;
             }
         }
         &__content{
-            font-size: 35px;
+            font-size: clamp(20px, 3vw + 10px, 35px);
             max-width: 936px;
+            line-height: 1.4;
         }
     }
 }

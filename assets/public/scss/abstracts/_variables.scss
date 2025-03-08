@@ -1,0 +1,70 @@
+@use 'functions' as f;
+
+// Font family
+$font-family-primary: 'Manrope', sans-serif;
+
+// Font weight
+$font-weight: (
+    "light":300,
+    "regular": 400,
+    "medium": 500,
+    "semibold": 600,
+    "bold": 700
+);
+
+// Font Sizes
+$font-sizes: (
+  "xs": f.rem(12),      // 0.75rem
+  "sm": f.rem(14),      // 0.875rem
+  "base": f.rem(16),    // 1rem
+  "lg": f.rem(18),      // 1.125rem
+  "xl": f.rem(20),      // 1.25rem
+  "2xl": f.rem(24),     // 1.5rem
+  "3xl": f.rem(30),     // 1.875rem
+  "4xl": f.rem(36),     // 2.25rem
+  "5xl": f.rem(48)      // 3rem
+);
+
+// Spacing
+$spacing: (
+  "0": 0,
+  "1": f.rem(4),     // 0.25rem
+  "2": f.rem(8),     // 0.5rem
+  "3": f.rem(12),    // 0.75rem
+  "4": f.rem(16),    // 1rem
+  "5": f.rem(20),    // 1.25rem
+  "6": f.rem(24),    // 1.5rem
+  "8": f.rem(32),    // 2rem
+  "10": f.rem(40),   // 2.5rem
+  "12": f.rem(48),   // 3rem
+  "16": f.rem(64),   // 4rem
+  "20": f.rem(80)    // 5rem
+);
+
+// Z-index
+$z-index: (
+  "negative": -1,
+  "0": 0,
+  "10": 10,
+  "20": 20,
+  "30": 30,
+  "40": 40,
+  "50": 50,
+  "auto": auto
+);
+
+// Border Radius
+$border-radius: (
+  "none": 0,
+  "sm": f.rem(2),      // 0.125rem
+  "base": f.rem(4),    // 0.25rem
+  "md": f.rem(6),      // 0.375rem
+  "lg": f.rem(8),      // 0.5rem
+  "xl": f.rem(12),     // 0.75rem
+  "2xl": f.rem(16),    // 1rem
+  "full": 9999px
+);
+
+// Transitions Βασικές ρυθμίσεις για animations
+$transition-duration: 0.2s;
+$transition-timing: ease-in-out;

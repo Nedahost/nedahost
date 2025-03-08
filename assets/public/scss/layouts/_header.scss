@@ -4,15 +4,19 @@
 
 header{ 
     background: var(--black-color);
-    color: var(--white-color);
+    color: map-get(a.$colors , 'white' );
     width: 100%;
     min-height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1;
-    display: flex;
-    align-items: flex-end; 
+
+    @include a.flex(
+        $direction: column,
+        $justify: flex-end,
+        $align: flex-start
+    );
 
     nav{
         position: absolute;

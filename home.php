@@ -14,8 +14,7 @@
     </section><!-- outer welcome end -->
 
     <section class="services">
-    <div class="container">
-        <!-- Title & Menu inside container -->
+    <div class="container"><!-- container start -->
         <div class="services__header">
             <div class="services__title">
                 <h2>Services</h2>
@@ -31,94 +30,59 @@
                 </ul>
             </nav>
         </div>
-    </div>
+    </div><!-- container end -->
     
-    <!-- Carousel OUTSIDE container for full-width -->
+ 
     <div class="services__carousel">
         <div class="carousel-container">
             <div class="carousel-track">
-                <!-- Slide 1 - Discovery -->
-                <div class="carousel-slide active" data-slide="0">
-                    <div class="slide-content">
-                        <div class="slide-image">
-                            <img src="discovery-image.jpg" alt="Discovery">
+
+                         
+                    <div class="carousel-slide" data-slide="0"><!--slider start -->
+                        <div class="card-main"><!-- card main start -->
+                            <div class="card-visual">
+                                <div class="card-circle"></div>
+                            </div>
+                            
+                            <div class="card-text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
+                                    sed diam nonumy eirmod tempor invidunt ut labore et dolore 
+                                    magna aliquyam erat, sed diam voluptua. At vero eos et accusam 
+                                    et justo duo dolores et ea rebum. Stet clita kasd gubergren, no 
+                                    sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum 
+                                    dolor sit amet
+                            </div>
+                        </div><!-- card main end -->
+                        
+                        <div class="card-footer">
+                            <h2 class="card-title">Web services</h2>
+                            <div class="card-number">01</div>
                         </div>
-                        <div class="slide-info">
-                            <h3>Web services</h3>
-                            <span class="slide-number">01</span>
-                            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit...</p>
+                    </div><!--slider end -->
+
+                    <div class="carousel-slide" data-slide="1"><!--slider start -->
+                        <div class="card-main"><!-- card main start -->
+                            <div class="card-visual">
+                                <div class="card-circle"></div>
+                            </div>
+                            
+                            <div class="card-text">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
+                                    sed diam nonumy eirmod tempor invidunt ut labore et dolore 
+                                    magna aliquyam erat, sed diam voluptua. At vero eos et accusam 
+                                    et justo duo dolores et ea rebum. Stet clita kasd gubergren, no 
+                                    sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum 
+                                    dolor sit amet
+                            </div>
+                        </div><!-- card main end -->
+                        
+                        <div class="card-footer">
+                            <h2 class="card-title">Web services</h2>
+                            <div class="card-number">02</div>
                         </div>
-                    </div>
-                </div>
-                
-                <!-- Slide 2 - Strategy -->
-                <div class="carousel-slide" data-slide="1">
-                    <div class="slide-content">
-                        <div class="slide-image">
-                            <img src="strategy-image.jpg" alt="Strategy">
-                        </div>
-                        <div class="slide-info">
-                            <h3>Digital Marketing</h3>
-                            <span class="slide-number">02</span>
-                            <p>Comprehensive digital marketing strategies...</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- More slides... -->
-                <div class="carousel-slide" data-slide="2">
-                    <div class="slide-content">
-                        <div class="slide-image">
-                            <img src="design-image.jpg" alt="Design">
-                        </div>
-                        <div class="slide-info">
-                            <h3>UI/UX Design</h3>
-                            <span class="slide-number">03</span>
-                            <p>Creative design solutions...</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="carousel-slide" data-slide="3">
-                    <div class="slide-content">
-                        <div class="slide-image">
-                            <img src="development-image.jpg" alt="Development">
-                        </div>
-                        <div class="slide-info">
-                            <h3>Development</h3>
-                            <span class="slide-number">04</span>
-                            <p>Custom development solutions...</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="carousel-slide" data-slide="4">
-                    <div class="slide-content">
-                        <div class="slide-image">
-                            <img src="launch-image.jpg" alt="Launch">
-                        </div>
-                        <div class="slide-info">
-                            <h3>Launch & Support</h3>
-                            <span class="slide-number">05</span>
-                            <p>Complete launch and ongoing support...</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </div><!--slider end -->
         
-        <!-- Navigation arrows -->
-        <div class="carousel-nav">
-            <button class="carousel-prev" aria-label="Previous slide">
-                <svg width="24" height="24" viewBox="0 0 24 24">
-                    <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" fill="none"/>
-                </svg>
-            </button>
-            <button class="carousel-next" aria-label="Next slide">
-                <svg width="24" height="24" viewBox="0 0 24 24">
-                    <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" fill="none"/>
-                </svg>
-            </button>
+            </div>
         </div>
     </div>
 </section>
@@ -192,9 +156,12 @@
 
     <section class="outercontact"><!-- outer contact star -->
         <div class="container">
-            <h3>
-                CONTACT
-            </h3>
+            <div class="outercontact__title">
+                <h3>
+                    CONTACT
+                </h3>
+            </div>
+            
             <div>
 
             </div>

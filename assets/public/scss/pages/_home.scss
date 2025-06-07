@@ -6,7 +6,7 @@
     .hometext{
         display: flex;
         align-items: flex-start;
-        justify-content: space-between;
+        justify-content: space-around;
         &__title{
             font-size: var(--font-size-card-title);
             white-space: nowrap;
@@ -28,8 +28,7 @@
 // Services Section
 .services {
     padding: 100px 0 0;
-    background: var(--color-dark-blue, #0f1b3c);
-    color: white;
+    color: var(--clr-white);
     
     // Header (Title + Menu) - Inside Container
     &__header {
@@ -53,12 +52,12 @@
     &__menu {
       ul {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         gap: clamp(20px, 4vw, 60px);
         list-style: none;
         margin: 0;
         padding: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        border-bottom: 4px solid var(--clr-white);
         
         @include a.breakpoint-down('md') {
           flex-wrap: wrap;
@@ -73,7 +72,7 @@
       a {
         display: block;
         padding: 15px 0;
-        color: rgba(255, 255, 255, 0.6);
+        color: var(--clr-white);
         text-decoration: none;
         font-size: var(--font-size-body);
         font-weight: 400;
@@ -84,7 +83,7 @@
         
         &:hover,
         &.active {
-          color: white;
+          color: var(--clr-white);
         }
         
         // Active indicator line
@@ -101,284 +100,23 @@
       }
     }
     
-    // Carousel - Full Width
-    &__carousel {
-      position: relative;
-      overflow: hidden;
-      margin-top: 80px;
-    }
-  }
-  
-  // Carousel Components
-  .carousel {
-    &-container {
-      position: relative;
-      height: 500px; // Adjust based on content
-      
-      @include a.breakpoint-down('lg') {
-        height: 450px;
-      }
-      
-      @include a.breakpoint-down('md') {
-        height: 400px;
-      }
-    }
-    
-    &-track {
-      display: flex;
-      height: 100%;
-      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      will-change: transform;
-    }
-    
-    &-slide {
-      flex: 0 0 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 0.6s ease;
-      
-      &.active {
-        opacity: 1;
-      }
-      
-      // Show partial next slide
-      &:not(.active) {
-        opacity: 0.3;
-      }
-    }
-    
-    // Navigation Arrows
-    &-nav {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 20px;
-      z-index: 10;
-      
-      @include a.breakpoint-down('md') {
-        bottom: 20px;
-        gap: 15px;
-      }
-    }
-    
-    &-prev,
-    &-next {
-      width: 50px;
-      height: 50px;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-      
-      @include a.breakpoint-down('md') {
-        width: 40px;
-        height: 40px;
-      }
-      
-      &:hover {
-        background: rgba(255, 255, 255, 0.2);
-        border-color: rgba(255, 255, 255, 0.5);
-        transform: scale(1.1);
-      }
-      
-      &:active {
-        transform: scale(0.95);
-      }
-      
-      &:disabled {
-        opacity: 0.3;
-        cursor: not-allowed;
-        transform: none;
-      }
-      
-      svg {
-        width: 20px;
-        height: 20px;
-        
-        @include a.breakpoint-down('md') {
-          width: 16px;
-          height: 16px;
-        }
-      }
-    }
-  }
-  
-  // Slide Content
-  .slide-content {
-    display: flex;
-    height: 100%;
-    max-width: none; // Full width
-    margin: 0;
-    padding: 0 clamp(20px, 5vw, 100px);
-    align-items: center;
-    gap: clamp(30px, 5vw, 80px);
-    
-    @include a.breakpoint-down('lg') {
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-      gap: 30px;
-      padding: 40px 20px;
-    }
-  }
-  
-  .slide-image {
-    flex: 0 0 45%;
-    height: 300px;
-    border-radius: 20px;
-    overflow: hidden;
-    position: relative;
-    
-    @include a.breakpoint-down('lg') {
-      flex: none;
-      width: 100%;
-      max-width: 400px;
-      height: 250px;
-    }
-    
-    @include a.breakpoint-down('md') {
-      height: 200px;
-    }
-    
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-    }
-    
-    // Hover effect
-    &:hover img {
-      transform: scale(1.05);
-    }
-    
-    // Gradient overlay for better text contrast
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        135deg, 
-        rgba(0, 212, 255, 0.1) 0%, 
-        rgba(15, 27, 60, 0.3) 100%
-      );
-    }
-  }
-  
-  .slide-info {
-    flex: 1;
-    position: relative;
-    
-    h3 {
-      font-size: clamp(1.5rem, 3vw, 2.5rem);
-      font-weight: 600;
-      margin: 0 0 20px 0;
-      color: white;
-      line-height: 1.2;
-    }
-    
-    p {
-      font-size: var(--font-size-text-large);
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.8);
-      margin: 0;
-      max-width: 500px;
-      
-      @include a.breakpoint-down('lg') {
-        max-width: none;
-      }
-    }
-  }
-  
-  .slide-number {
-    position: absolute;
-    top: -20px;
-    right: 0;
-    font-size: clamp(3rem, 5vw, 5rem);
-    font-weight: 100;
-    color: rgba(255, 255, 255, 0.1);
-    line-height: 1;
-    pointer-events: none;
-    
-    @include a.breakpoint-down('lg') {
-      position: static;
-      display: block;
-      text-align: center;
-      margin-bottom: 15px;
-    }
-  }
-  
-  // Animations
-  @keyframes slideIn {
-    from {
-      transform: scaleX(0);
-    }
-    to {
-      transform: scaleX(1);
-    }
-  }
-  
-  // Carousel indicators (optional dots)
-  .carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 30px;
-    
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.3);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      
-      &.active {
-        background: var(--color-accent, #00d4ff);
-        transform: scale(1.2);
-      }
-    }
-  }
-  
-  // Loading states
-  .carousel-slide {
-    .slide-image {
-      position: relative;
-      
-      &::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.1),
-          transparent
-        );
-        transform: translateX(-100%);
-        animation: shimmer 2s infinite;
-      }
-    }
-  }
-  
-  @keyframes shimmer {
-    100% {
-      transform: translateX(100%);
-    }
   }
 
 
 
 
 .work{
+  &__title{
+      text-align: center;
+      margin-bottom: 40px;
+    h3{
+      font-size: var(--font-size-mega-title);
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin: 0;
+    }
+  }
     .listprojects{
         padding: 0 100px;
         ul{
@@ -392,6 +130,7 @@
                         }
                         figcaption{
                             font-size: 35px;
+                            color: var(--clr-white);
                         }
                     }
                 }
@@ -403,7 +142,7 @@
                         width: 50%;
                         .right-box {
                             height: 87%; /* Ύψος του κουτιού */
-                            border: 1px solid var(--white-color); /* Περίγραμμα */
+                            border: 1px solid var(--clr-white); /* Περίγραμμα */
                             border-radius: 10px; /* Στρογγυλεμένες γωνίες */
                             display: flex; /* Flexbox για κεντράρισμα */
                             justify-content: center; /* Οριζόντια στοίχιση του "+" */
@@ -412,7 +151,7 @@
                           }
                           
                           .plus-symbol {
-                            color: var(--white-color); /* Χρώμα του "+" */
+                            color: var(--clr-white);
                             font-size: 40px; /* Μέγεθος του "+" */
                             font-weight: bold; /* Πάχος γραμματοσειράς */
                           }
@@ -421,4 +160,18 @@
             }
         }
     }
+}
+
+.outercontact{
+  &__title{
+    text-align: center;
+      margin-bottom: 40px;
+    h3{
+      font-size: var(--font-size-mega-title);
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin: 0;
+    }
+  }
 }

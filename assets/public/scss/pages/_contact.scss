@@ -1,0 +1,37 @@
+@use '../abstracts' as a;
+
+.outercontact{
+    .home_form{
+        display: grid;
+        justify-items: center;
+        margin-top: 100px;
+        label{
+            display: flex;
+            margin-bottom: 20px;
+            .hmlabeltitle{
+                width: 100px;
+                padding-top: 10px;
+            }
+            span{
+                input{
+                    background: transparent;
+                    color: white;
+                    border-top: 0;
+                    border-left: 0;
+                    border-right: 0;
+                    border-bottom: 6px solid white;
+                    outline: none;
+                    height: 37px;
+                    font-size: var(--font-size-input);
+                    width: 750px;
+                    
+                }
+                & ::placeholder{
+                    color: var(--clr-white);
+                    font-size: var(--font-size-input);
+                }
+            }
+        }
+    }
+
+}

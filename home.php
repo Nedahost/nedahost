@@ -156,15 +156,15 @@
 
     <section class="outercontact"><!-- outer contact star -->
         <div class="container">
-            <div class="outercontact__title">
+            <div class="outercontact__title"><!-- title start -->
                 <h3>
                     CONTACT
                 </h3>
-            </div>
+            </div><!-- title end -->
             
-            <div>
-
-            </div>
+            <div class="home_form"><!-- home form start -->
+                <?php echo do_shortcode('[contact-form-7 id="6f76224" title="home contact"]'); ?>
+            </div><!-- home form end -->
         </div>
     </section><!-- outer contact end -->
 

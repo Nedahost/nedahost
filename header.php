@@ -346,7 +346,7 @@ if (typeof module !== 'undefined' && module.exports) {
 
                 <div class="text">
                     A web design and development 
-                    agency in Athens
+                    agency in Athensss
                 </div>
                 <div class="logo"><!-- logo start -->
                     <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/logo.svg" alt="Nedahost">

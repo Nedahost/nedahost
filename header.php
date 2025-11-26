@@ -14,6 +14,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
        
         <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+        <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+
         <?php wp_head(); ?>
         <script>
             class ServicesCarousel {
@@ -21,14 +23,11 @@
     this.currentSlide = 0;
     this.totalSlides = 0;
     this.isAnimating = false;
-    this.autoPlayInterval = null;
-    this.autoPlayDelay = 5000; // 5 seconds
     
     this.init();
   }
   
   init() {
-    // Cache DOM elements
     this.carousel = document.querySelector('.services__carousel');
     this.track = document.querySelector('.carousel-track');
     this.slides = document.querySelectorAll('.carousel-slide');
@@ -43,33 +42,31 @@
     
     this.totalSlides = this.slides.length;
     
-    // Setup initial state
+    // Κλωνοποίηση slides για infinite loop
+    this.cloneSlides();
+    
     this.setupCarousel();
-    
-    // Bind events
     this.bindEvents();
+  }
+  
+  cloneSlides() {
+    // Κλωνοποίησε τα πρώτα 2 slides στο τέλος
+    this.slides.forEach((slide) => {
+      const clone = slide.cloneNode(true);
+      clone.classList.add('clone');
+      this.track.appendChild(clone);
+    });
     
-    // Start autoplay
-    this.startAutoPlay();
-    
-    // Setup intersection observer for performance
-    this.setupIntersectionObserver();
+    // Update slides reference
+    this.allSlides = document.querySelectorAll('.carousel-slide');
   }
   
   setupCarousel() {
-    // Set initial active states
     this.slides[0]?.classList.add('active');
     this.menuItems[0]?.classList.add('active');
-    
-    // Setup slide positions for partial view effect
-    this.updateSlidePositions();
-    
-    // Update navigation buttons
-    this.updateNavButtons();
   }
   
   bindEvents() {
-    // Menu navigation
     this.menuItems.forEach((item, index) => {
       item.addEventListener('click', (e) => {
         e.preventDefault();
@@ -77,257 +74,238 @@
       });
     });
     
-    // Arrow navigation
     this.prevBtn?.addEventListener('click', () => this.previousSlide());
     this.nextBtn?.addEventListener('click', () => this.nextSlide());
     
-    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
       if (!this.isInViewport()) return;
       
-      switch(e.key) {
-        case 'ArrowLeft':
-          e.preventDefault();
-          this.previousSlide();
-          break;
-        case 'ArrowRight':
-          e.preventDefault();
-          this.nextSlide();
-          break;
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        this.previousSlide();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        this.nextSlide();
       }
     });
     
-    // Touch/swipe support
     this.setupTouchEvents();
-    
-    // Pause autoplay on hover
-    this.carousel.addEventListener('mouseenter', () => this.pauseAutoPlay());
-    this.carousel.addEventListener('mouseleave', () => this.startAutoPlay());
-    
-    // Pause autoplay when page is not visible
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        this.pauseAutoPlay();
-      } else {
-        this.startAutoPlay();
-      }
-    });
   }
   
   setupTouchEvents() {
-    let startX = 0;
-    let currentX = 0;
-    let isDragging = false;
+  let startX = 0;
+  let currentX = 0;
+  let isDragging = false;
+  let startTranslate = 0;
+  
+  // Touch events
+  this.carousel.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+    startTranslate = this.getCurrentTranslate();
+    this.track.style.transition = 'none';
+  }, { passive: true });
+  
+  this.carousel.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    currentX = e.touches[0].clientX;
+    const diff = currentX - startX;
+    this.track.style.transform = `translateX(${startTranslate + diff}px)`;
+  }, { passive: true });
+  
+  this.carousel.addEventListener('touchend', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    this.track.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1)';
     
-    const handleTouchStart = (e) => {
-      startX = e.touches ? e.touches[0].clientX : e.clientX;
-      isDragging = true;
-      this.pauseAutoPlay();
-    };
-    
-    const handleTouchMove = (e) => {
-      if (!isDragging) return;
-      currentX = e.touches ? e.touches[0].clientX : e.clientX;
-    };
-    
-    const handleTouchEnd = () => {
-      if (!isDragging) return;
-      isDragging = false;
-      
-      const diffX = startX - currentX;
-      const threshold = 50; // Minimum swipe distance
-      
-      if (Math.abs(diffX) > threshold) {
-        if (diffX > 0) {
-          this.nextSlide();
-        } else {
-          this.previousSlide();
-        }
+    const diff = currentX - startX;
+    if (Math.abs(diff) > 50) {
+      if (diff < 0) {
+        this.nextSlide();
+      } else {
+        this.previousSlide();
       }
-      
-      this.startAutoPlay();
-    };
-    
-    // Touch events
-    this.carousel.addEventListener('touchstart', handleTouchStart, { passive: true });
-    this.carousel.addEventListener('touchmove', handleTouchMove, { passive: true });
-    this.carousel.addEventListener('touchend', handleTouchEnd);
-    
-    // Mouse events for desktop drag
-    this.carousel.addEventListener('mousedown', handleTouchStart);
-    document.addEventListener('mousemove', handleTouchMove);
-    document.addEventListener('mouseup', handleTouchEnd);
-  }
+    } else {
+      this.animateToSlide(this.currentSlide);
+    }
+  });
   
-  setupIntersectionObserver() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          this.startAutoPlay();
-        } else {
-          this.pauseAutoPlay();
-        }
-      });
-    }, { threshold: 0.3 });
+  // Mouse drag
+  this.carousel.addEventListener('mousedown', (e) => {
+    startX = e.clientX;
+    currentX = e.clientX;
+    isDragging = true;
+    startTranslate = this.getCurrentTranslate();
+    this.track.style.transition = 'none';
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    currentX = e.clientX;
+    const diff = currentX - startX;
+    this.track.style.transform = `translateX(${startTranslate + diff}px)`;
+  });
+
+  document.addEventListener('mouseup', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    this.track.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1)';
     
-    observer.observe(this.carousel);
-  }
+    const diff = currentX - startX;
+    if (Math.abs(diff) > 50) {
+      if (diff < 0) {
+        this.nextSlide();
+      } else {
+        this.previousSlide();
+      }
+    } else {
+      this.animateToSlide(this.currentSlide);
+    }
+  });
+}
+
+getCurrentTranslate() {
+  const style = window.getComputedStyle(this.track);
+  const matrix = new DOMMatrix(style.transform);
+  return matrix.m41;
+}
   
-  goToSlide(index, direction = 'next') {
+  goToSlide(index) {
     if (this.isAnimating || index === this.currentSlide || index < 0 || index >= this.totalSlides) {
       return;
     }
     
     this.isAnimating = true;
-    
-    // Update current slide
-    const prevSlide = this.currentSlide;
     this.currentSlide = index;
     
     // Update active states
-    this.updateActiveStates();
+    this.slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === this.currentSlide);
+    });
     
-    // Animate slides
-    this.animateSlides(prevSlide, direction);
+    this.menuItems.forEach((item, i) => {
+      item.classList.toggle('active', i === this.currentSlide);
+    });
     
-    // Update navigation
-    this.updateNavButtons();
+    this.animateToSlide(index);
     
-    // Reset animation flag
     setTimeout(() => {
       this.isAnimating = false;
-    }, 600); // Match CSS transition duration
+    }, 600);
   }
   
-  updateActiveStates() {
-    // Update slides
-    this.slides.forEach((slide, index) => {
-      slide.classList.toggle('active', index === this.currentSlide);
-    });
+  animateToSlide(index) {
+    const slide = this.slides[0];
+    const style = window.getComputedStyle(this.track);
+    const gap = parseInt(style.gap) || 50;
+    const slideWidth = slide.getBoundingClientRect().width;
+    const offset = -index * (slideWidth + gap);
     
-    // Update menu items
-    this.menuItems.forEach((item, index) => {
-      item.classList.toggle('active', index === this.currentSlide);
-    });
-  }
-  
-  animateSlides(prevSlide, direction) {
-    // Calculate transform value for partial view effect
-    const slideWidth = this.slides[0].offsetWidth;
-    const gap = 50; // Gap between slides
-    const offset = -this.currentSlide * (slideWidth + gap);
-    
-    // Apply transform with smooth transition
     this.track.style.transform = `translateX(${offset}px)`;
-    
-    // Add stagger animation to slide content
-    const currentSlideContent = this.slides[this.currentSlide].querySelector('.slide-content');
-    if (currentSlideContent) {
-      currentSlideContent.style.opacity = '0';
-      currentSlideContent.style.transform = `translateY(20px)`;
-      
-      setTimeout(() => {
-        currentSlideContent.style.transition = 'all 0.4s ease 0.2s';
-        currentSlideContent.style.opacity = '1';
-        currentSlideContent.style.transform = 'translateY(0)';
-      }, 100);
-    }
-  }
-  
-  updateSlidePositions() {
-    // Setup slides for partial view effect
-    this.slides.forEach((slide, index) => {
-      const offset = index * 100; // Each slide takes full width
-      slide.style.transform = `translateX(${offset}%)`;
-    });
   }
   
   nextSlide() {
-    const nextIndex = (this.currentSlide + 1) % this.totalSlides;
-    this.goToSlide(nextIndex, 'next');
+  if (this.isAnimating) return;
+  
+  this.isAnimating = true;
+  this.currentSlide++;
+  
+  const slide = this.slides[0];
+  const style = window.getComputedStyle(this.track);
+  const gap = parseInt(style.gap) || 50;
+  const slideWidth = slide.getBoundingClientRect().width;
+  const offset = -this.currentSlide * (slideWidth + gap);
+  
+  this.track.style.transform = `translateX(${offset}px)`;
+  
+  // Αν φτάσαμε στα clones, πήγαινε στην αρχή χωρίς animation
+  if (this.currentSlide >= this.totalSlides) {
+    setTimeout(() => {
+      this.track.style.transition = 'none';
+      this.currentSlide = 0;
+      this.track.style.transform = `translateX(0px)`;
+      
+      setTimeout(() => {
+        this.track.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1)';
+      }, 50);
+    }, 600);
   }
   
-  previousSlide() {
-    const prevIndex = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
-    this.goToSlide(prevIndex, 'prev');
-  }
+  // Update menu
+  const menuIndex = this.currentSlide % this.totalSlides;
+  this.menuItems.forEach((item, i) => {
+    item.classList.toggle('active', i === menuIndex);
+  });
   
-  updateNavButtons() {
-    if (this.prevBtn) {
-      this.prevBtn.disabled = false; // Always enabled for infinite loop
-    }
-    if (this.nextBtn) {
-      this.nextBtn.disabled = false; // Always enabled for infinite loop
-    }
-  }
+  this.slides.forEach((slide, i) => {
+    slide.classList.toggle('active', i === menuIndex);
+  });
   
-  startAutoPlay() {
-    this.pauseAutoPlay(); // Clear existing interval
+  setTimeout(() => {
+    this.isAnimating = false;
+  }, 650);
+}
+
+previousSlide() {
+  if (this.isAnimating) return;
+  
+  // Αν είμαστε στην αρχή, πήγαινε στο τέλος χωρίς animation πρώτα
+  if (this.currentSlide === 0) {
+    this.track.style.transition = 'none';
+    this.currentSlide = this.totalSlides;
     
-    this.autoPlayInterval = setInterval(() => {
-      if (!this.isAnimating && this.isInViewport()) {
-        this.nextSlide();
-      }
-    }, this.autoPlayDelay);
+    const slide = this.slides[0];
+    const style = window.getComputedStyle(this.track);
+    const gap = parseInt(style.gap) || 50;
+    const slideWidth = slide.getBoundingClientRect().width;
+    const offset = -this.currentSlide * (slideWidth + gap);
+    
+    this.track.style.transform = `translateX(${offset}px)`;
+    
+    setTimeout(() => {
+      this.track.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1)';
+      this.currentSlide--;
+      const newOffset = -this.currentSlide * (slideWidth + gap);
+      this.track.style.transform = `translateX(${newOffset}px)`;
+    }, 50);
+  } else {
+    this.isAnimating = true;
+    this.currentSlide--;
+    
+    const slide = this.slides[0];
+    const style = window.getComputedStyle(this.track);
+    const gap = parseInt(style.gap) || 50;
+    const slideWidth = slide.getBoundingClientRect().width;
+    const offset = -this.currentSlide * (slideWidth + gap);
+    
+    this.track.style.transform = `translateX(${offset}px)`;
   }
   
-  pauseAutoPlay() {
-    if (this.autoPlayInterval) {
-      clearInterval(this.autoPlayInterval);
-      this.autoPlayInterval = null;
-    }
-  }
+  // Update menu
+  const menuIndex = this.currentSlide % this.totalSlides;
+  this.menuItems.forEach((item, i) => {
+    item.classList.toggle('active', i === menuIndex);
+  });
+  
+  this.slides.forEach((slide, i) => {
+    slide.classList.toggle('active', i === menuIndex);
+  });
+  
+  setTimeout(() => {
+    this.isAnimating = false;
+  }, 650);
+}
   
   isInViewport() {
     const rect = this.carousel.getBoundingClientRect();
     return rect.top < window.innerHeight && rect.bottom > 0;
   }
-  
-  // Public API methods
-  play() {
-    this.startAutoPlay();
-  }
-  
-  pause() {
-    this.pauseAutoPlay();
-  }
-  
-  getCurrentSlide() {
-    return this.currentSlide;
-  }
-  
-  getTotalSlides() {
-    return this.totalSlides;
-  }
-  
-  destroy() {
-    this.pauseAutoPlay();
-    // Remove event listeners if needed
-    // Reset DOM state if needed
-  }
 }
 
-// Auto-initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize carousel
   window.servicesCarousel = new ServicesCarousel();
 });
-
-// Handle page resize
-let resizeTimeout;
-window.addEventListener('resize', () => {
-  clearTimeout(resizeTimeout);
-  resizeTimeout = setTimeout(() => {
-    if (window.servicesCarousel) {
-      window.servicesCarousel.updateSlidePositions();
-    }
-  }, 250);
-});
-
-// Export for module usage
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = ServicesCarousel;
-}
             </script>
     </head>
     <body <?php body_class(); ?>>
@@ -346,7 +324,7 @@ if (typeof module !== 'undefined' && module.exports) {
 
                 <div class="text">
                     A web design and development 
-                    agency in Athensss
+                    agency in Athens
                 </div>
                 <div class="logo"><!-- logo start -->
                     <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/logo.svg" alt="Nedahost">

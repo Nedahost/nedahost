@@ -67,50 +67,94 @@ function custom_section_fields() {
 add_action('add_meta_boxes', 'custom_section_fields');
 
 function custom_section_fields_callback($post) {
-  $extra_field_1_value = get_post_meta($post->ID, 'extra_field_1', true);
-  $extra_field_2_value = get_post_meta($post->ID, 'extra_field_2', true);
-  $extra_field_3_value = get_post_meta($post->ID, 'extra_field_3', true);
+  wp_nonce_field('services_meta_box', 'services_meta_box_nonce');
+  
+  $service_number = get_post_meta($post->ID, 'service_number', true);
+  $service_color = get_post_meta($post->ID, 'service_color', true);
+  $text_color = get_post_meta($post->ID, 'text_color', true);
+  $service_link = get_post_meta($post->ID, 'service_link', true);
+  $card_title = get_post_meta($post->ID, 'card_title', true);
   $show_on_frontpage = get_post_meta($post->ID, 'show_on_frontpage', true);
+  ?>
+  
+  <p>
+      <label for="card_title"><strong>Τίτλος κάρτας:</strong></label><br>
+      <input type="text" id="card_title" name="card_title" value="<?php echo esc_attr($card_title); ?>" style="width: 100%;" placeholder="Αν είναι κενό, χρησιμοποιείται ο κύριος τίτλος">
+  </p>
+  
+  <p>
+      <label for="service_number"><strong>Αριθμός (01, 02, κλπ):</strong></label><br>
+      <input type="text" id="service_number" name="service_number" value="<?php echo esc_attr($service_number); ?>" style="width: 100px;">
+  </p>
+  
+  <p>
+      <label for="service_color"><strong>Χρώμα κάρτας:</strong></label><br>
+      <input type="text" id="service_color" name="service_color" value="<?php echo esc_attr($service_color); ?>" placeholder="#0d0d1a" style="width: 150px;">
+  </p>
+  
+  <p>
+    <label for="text_color"><strong>Χρώμα κειμένου:</strong></label><br>
+    <select id="text_color" name="text_color" style="width: 150px;">
+        <option value="light" <?php selected($text_color, 'light'); ?>>Λευκό (για σκούρο background)</option>
+        <option value="dark" <?php selected($text_color, 'dark'); ?>>Μαύρο (για ανοιχτό background)</option>
+    </select>
+  </p>
 
-  echo '<label for="extra_field_1">Πρόσθετο Πεδίο 1:</label>';
-  echo '<input type="text" id="extra_field_1" name="extra_field_1" value="' . esc_attr($extra_field_1_value) . '"><br>';
-
-  echo '<label for="extra_field_1_link">Σύνδεσμος Πεδίου 1:</label>';
-  echo '<input type="url" id="extra_field_1_link" name="extra_field_1_link" value="' . esc_attr(get_post_meta($post->ID, 'extra_field_1_link', true)) . '"><br>';
-
-
-  echo '<label for="extra_field_2">Πρόσθετο Πεδίο 2:</label>';
-  echo '<input type="text" id="extra_field_2" name="extra_field_2" value="' . esc_attr($extra_field_2_value) . '"><br>';
-
-  echo '<label for="extra_field_3">Πρόσθετο Πεδίο 3:</label>';
-  echo '<input type="text" id="extra_field_3" name="extra_field_3" value="' . esc_attr($extra_field_3_value) . '">';
-
-  echo '<label for="show_on_frontpage">Display on Front Page:</label>';
-  echo '<input type="checkbox" id="show_on_frontpage" name="show_on_frontpage" value="1" ' . checked($show_on_frontpage, 1, false) . '>';
+  <p>
+      <label for="service_link"><strong>Σύνδεση με σελίδα:</strong></label><br>
+      <?php $pages = get_pages(); ?>
+      <select id="service_link" name="service_link" style="width: 300px;">
+          <option value="">-- Επιλέξτε σελίδα --</option>
+          <?php foreach ($pages as $page) : ?>
+              <option value="<?php echo get_permalink($page->ID); ?>" <?php selected($service_link, get_permalink($page->ID)); ?>>
+                  <?php echo esc_html($page->post_title); ?>
+              </option>
+          <?php endforeach; ?>
+      </select>
+  </p>
+  
+  <p>
+      <label for="show_on_frontpage">
+          <input type="checkbox" id="show_on_frontpage" name="show_on_frontpage" value="1" <?php checked($show_on_frontpage, 1); ?>>
+          <strong>Εμφάνιση στην αρχική</strong>
+      </label>
+  </p>
+  
+  <?php
 }
 
 function save_custom_section_fields($post_id) {
+  if (!isset($_POST['services_meta_box_nonce']) || 
+      !wp_verify_nonce($_POST['services_meta_box_nonce'], 'services_meta_box')) {
+      return;
+  }
+  
   if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
-
-  if (isset($_POST['extra_field_1'])) {
-      update_post_meta($post_id, 'extra_field_1', sanitize_text_field($_POST['extra_field_1']));
+  
+  if (isset($_POST['card_title'])) {
+      update_post_meta($post_id, 'card_title', sanitize_text_field($_POST['card_title']));
+  }
+  
+  if (isset($_POST['service_number'])) {
+      update_post_meta($post_id, 'service_number', sanitize_text_field($_POST['service_number']));
+  }
+  
+  if (isset($_POST['service_color'])) {
+      update_post_meta($post_id, 'service_color', sanitize_text_field($_POST['service_color']));
+  }
+  
+  if (isset($_POST['text_color'])) {
+      update_post_meta($post_id, 'text_color', sanitize_text_field($_POST['text_color']));
   }
 
-  if (isset($_POST['extra_field_2'])) {
-      update_post_meta($post_id, 'extra_field_2', sanitize_text_field($_POST['extra_field_2']));
+  if (isset($_POST['service_link'])) {
+      update_post_meta($post_id, 'service_link', esc_url_raw($_POST['service_link']));
   }
-
-  if (isset($_POST['extra_field_3'])) {
-      update_post_meta($post_id, 'extra_field_3', sanitize_text_field($_POST['extra_field_3']));
-  }
-
-  if (isset($_POST['show_on_frontpage'])) {
-    update_post_meta($post_id, 'show_on_frontpage', 1);
-  } else {
-      update_post_meta($post_id, 'show_on_frontpage', 0);
-  }
+  
+  $show_on_frontpage = isset($_POST['show_on_frontpage']) ? 1 : 0;
+  update_post_meta($post_id, 'show_on_frontpage', $show_on_frontpage);
 }
-add_action('save_post', 'save_custom_section_fields');
+add_action('save_post_nedahost_services', 'save_custom_section_fields');
 
 
 

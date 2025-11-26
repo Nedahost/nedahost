@@ -14,75 +14,101 @@
     </section><!-- outer welcome end -->
 
     <section class="services">
-    <div class="container"><!-- container start -->
+    <div class="container">
         <div class="services__header">
-            <div class="services__title">
-                <h2>Services</h2>
-            </div>
-            
             <nav class="services__menu">
                 <ul>
-                    <li><a href="#" data-slide="0" class="active">Discovery</a></li>
-                    <li><a href="#" data-slide="1">Strategy</a></li>
-                    <li><a href="#" data-slide="2">Design</a></li>
-                    <li><a href="#" data-slide="3">Development</a></li>
-                    <li><a href="#" data-slide="4">Launch</a></li>
+                    <?php
+                    $services = new WP_Query(array(
+                        'post_type' => 'nedahost_services',
+                        'posts_per_page' => -1,
+                        'orderby' => 'menu_order',
+                        'order' => 'ASC',
+                        'meta_key' => 'show_on_frontpage',
+                        'meta_value' => '1'
+                    ));
+                    
+                    $index = 0;
+                    if ($services->have_posts()) :
+                        while ($services->have_posts()) : $services->the_post();
+                    ?>
+                        <li>
+                            <a href="#" data-slide="<?php echo $index; ?>" <?php echo $index === 0 ? 'class="active"' : ''; ?>>
+                                <?php the_title(); ?>
+                            </a>
+                        </li>
+                    <?php 
+                        $index++;
+                        endwhile;
+                    endif;
+                    wp_reset_postdata();
+                    ?>
                 </ul>
             </nav>
         </div>
-    </div><!-- container end -->
-    
- 
+    </div>
+
     <div class="services__carousel">
-        <div class="carousel-container">
-            <div class="carousel-track">
-
-                         
-                    <div class="carousel-slide" data-slide="0"><!--slider start -->
-                        <div class="card-main"><!-- card main start -->
-                            <div class="card-visual">
+        <div class="carousel-track">
+            <?php
+            $services = new WP_Query(array(
+                'post_type' => 'nedahost_services',
+                'posts_per_page' => -1,
+                'orderby' => 'menu_order',
+                'order' => 'ASC',
+                'meta_key' => 'show_on_frontpage',
+                'meta_value' => '1'
+            ));
+            
+            $index = 0;
+            if ($services->have_posts()) :
+                while ($services->have_posts()) : $services->the_post();
+                    $number = get_post_meta(get_the_ID(), 'service_number', true);
+                    $color = get_post_meta(get_the_ID(), 'service_color', true);
+                    $text_color = get_post_meta(get_the_ID(), 'text_color', true);
+                    $text_class = ($text_color === 'dark') ? 'text-dark' : 'text-light';
+                    $link = get_post_meta(get_the_ID(), 'service_link', true);
+            ?>
+                <div class="carousel-slide <?php echo $text_class; ?>" data-slide="<?php echo $index; ?>" <?php echo $color ? 'style="background-color: ' . esc_attr($color) . ';"' : ''; ?>>
+                    <div class="card-main">
+                        <div class="card-visual">
+                            <?php if (has_post_thumbnail()) : ?>
+                                <?php the_post_thumbnail('medium'); ?>
+                            <?php else : ?>
                                 <div class="card-circle"></div>
-                            </div>
-                            
-                            <div class="card-text">
-                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
-                                    sed diam nonumy eirmod tempor invidunt ut labore et dolore 
-                                    magna aliquyam erat, sed diam voluptua. At vero eos et accusam 
-                                    et justo duo dolores et ea rebum. Stet clita kasd gubergren, no 
-                                    sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum 
-                                    dolor sit amet
-                            </div>
-                        </div><!-- card main end -->
-                        
-                        <div class="card-footer">
-                            <h2 class="card-title">Web services</h2>
-                            <div class="card-number">01</div>
+                            <?php endif; ?>
                         </div>
-                    </div><!--slider end -->
+                        <div class="card-text">
+                            <?php the_content(); ?>
+                        </div>
+                    </div>
+                    <?php
+                    $card_title = get_post_meta(get_the_ID(), 'card_title', true);
+                    $display_title = !empty($card_title) ? $card_title : get_the_title();
+                    ?>
 
-                    <div class="carousel-slide" data-slide="1"><!--slider start -->
-                        <div class="card-main"><!-- card main start -->
-                            <div class="card-visual">
-                                <div class="card-circle"></div>
-                            </div>
-                            
-                            <div class="card-text">
-                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
-                                    sed diam nonumy eirmod tempor invidunt ut labore et dolore 
-                                    magna aliquyam erat, sed diam voluptua. At vero eos et accusam 
-                                    et justo duo dolores et ea rebum. Stet clita kasd gubergren, no 
-                                    sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum 
-                                    dolor sit amet
-                            </div>
-                        </div><!-- card main end -->
-                        
-                        <div class="card-footer">
-                            <h2 class="card-title">Web services</h2>
-                            <div class="card-number">02</div>
-                        </div>
-                    </div><!--slider end -->
+                    <div class="card-footer">
+                        <?php if ($link) : ?>
+                            <a href="<?php echo esc_url($link); ?>">
+                                <h2 class="card-title"><?php echo esc_html($display_title); ?></h2>
+                            </a>
+                        <?php else : ?>
+                            <h2 class="card-title"><?php echo esc_html($display_title); ?></h2>
+                        <?php endif; ?>
+                        <div class="card-number"><?php echo esc_html($number); ?></div>
+                    </div>
+                </div>
+            <?php 
+                $index++;
+                endwhile;
+            endif;
+            wp_reset_postdata();
+            ?>
+        </div>
         
-            </div>
+        <div class="carousel-navigation">
+            <button class="carousel-prev">←</button>
+            <button class="carousel-next">→</button>
         </div>
     </div>
 </section>

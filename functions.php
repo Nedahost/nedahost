@@ -495,3 +495,77 @@ function add_promotional_banner() {
     </script>
     <?php
 }
+
+
+
+
+
+// Services Custom Post Type
+function create_services_cpt() {
+    register_post_type('services', array(
+        'labels' => array(
+            'name' => 'Services',
+            'singular_name' => 'Service',
+            'add_new' => 'Προσθήκη Service',
+            'add_new_item' => 'Προσθήκη Νέου Service',
+            'edit_item' => 'Επεξεργασία Service',
+            'all_items' => 'Όλα τα Services',
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'menu_icon' => 'dashicons-admin-tools',
+        'supports' => array('title', 'editor', 'thumbnail', 'page-attributes'),
+        'show_in_rest' => true,
+        'rewrite' => array('slug' => 'services'),
+    ));
+}
+add_action('init', 'create_services_cpt');
+
+// Custom Fields για Services (χωρίς plugin)
+function services_meta_boxes() {
+    add_meta_box(
+        'services_details',
+        'Service Details',
+        'services_meta_box_html',
+        'services',
+        'normal',
+        'high'
+    );
+}
+add_action('add_meta_boxes', 'services_meta_boxes');
+
+function services_meta_box_html($post) {
+    $number = get_post_meta($post->ID, '_service_number', true);
+    $circle_color = get_post_meta($post->ID, '_service_color', true);
+    wp_nonce_field('services_meta_box', 'services_meta_box_nonce');
+    ?>
+    <p>
+        <label>Αριθμός (01, 02, κλπ):</label><br>
+        <input type="text" name="service_number" value="<?php echo esc_attr($number); ?>">
+    </p>
+    <p>
+        <label>Χρώμα κάρτας (hex):</label><br>
+        <input type="text" name="service_color" value="<?php echo esc_attr($circle_color); ?>" placeholder="#0d0d1a">
+    </p>
+    <?php
+}
+
+function save_services_meta($post_id) {
+    if (!isset($_POST['services_meta_box_nonce']) || 
+        !wp_verify_nonce($_POST['services_meta_box_nonce'], 'services_meta_box')) {
+        return;
+    }
+    
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+    
+    if (isset($_POST['service_number'])) {
+        update_post_meta($post_id, '_service_number', sanitize_text_field($_POST['service_number']));
+    }
+    
+    if (isset($_POST['service_color'])) {
+        update_post_meta($post_id, '_service_color', sanitize_hex_color($_POST['service_color']));
+    }
+}
+add_action('save_post_services', 'save_services_meta');

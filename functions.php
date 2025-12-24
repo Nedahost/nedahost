@@ -25,6 +25,8 @@ add_action( 'wp_enqueue_scripts', 'nedahost_load_css' );
 function load_js(){
     wp_enqueue_script('JQuery', 'https://code.jquery.com/jquery-3.6.4.min.js', array(), null, true);
     //wp_enqueue_script('slick', '//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js?ver=1.5', array(), null, true);
+     // Lenis πρώτα
+    wp_enqueue_script('lenis', 'https://unpkg.com/lenis@1.1.13/dist/lenis.min.js', array(), null, true);
     wp_enqueue_script('myjs', get_template_directory_uri() . '/assets/js/myjs.js', array('jquery'), false, true);
 
     remove_action('wp_head', 'print_emoji_detection_script', 7);
@@ -92,6 +94,16 @@ function nedahost_wp_title( $title, $sep ) {
 
 	return $title;
 }
+
+
+// Register secondary header για εσωτερικές σελίδες
+function nedahost_body_class($classes) {
+    if (!is_front_page()) {
+        $classes[] = 'has-sticky-header';
+    }
+    return $classes;
+}
+add_filter('body_class', 'nedahost_body_class');
 
 
 

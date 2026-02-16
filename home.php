@@ -9,7 +9,11 @@
                 Ποιοι είμαστε
             </div><!-- title end -->
             <div class="hometext__content"><!-- content start -->
-                Η Nedahost ιδρύθηκε το 2016, είναι μια εταιρεία σχεδιασμού και ανάπτυξης ιστοσελίδων. Παρόλο το μικρό διάστημα λειτουργίας μας, διαθέτουμε πάνω από 10 χρόνια εμπειρία στο προγραμματισμό, τη σχεδίαση και τη προώθηση ιστοσελίδων, παρέχοντας ολοκληρωμένες λύσεις για κάθε επιχείρηση.
+                Η <b>Nedahost</b> ιδρύθηκε το 2016 με στόχο την παροχή υπηρεσιών υψηλού επιπέδου στον <b>σχεδιασμό</b>, 
+                <b>την ανάπτυξη και την προώθηση ιστοσελίδων</b>. Με μια πορεία που στηρίζεται σε περισσότερα 
+                από <b>15 χρόνια ενασχόλησης με τον προγραμματισμό</b>, εγγυόμαστε τεχνικά άρτια 
+                αποτελέσματα και ολοκληρωμένες λύσεις που βοηθούν κάθε επιχείρηση να ξεχωρίσει στον 
+                ψηφιακό κόσμο και να ενισχύσει ουσιαστικά την παρουσία της.
                 <a href="#" class="hometext__arrow">
                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Arrow.png" alt="Arrow">
                 </a>
@@ -18,45 +22,7 @@
     </div><!-- container end -->
 </section><!-- outer welcome end -->
 
-<section class="marquee-section">
-    <div class="marquee-track marquee-track--top">
-        <div class="marquee-content">
-            <span>WEB SERVICES</span>
-            <span>WEB DESIGN</span>
-            <span>HOSTING & SECURITY</span>
-            <span>SEO</span>
-            <span>SEARCH ENGINE OPTIMIZATION</span>
-            <span>EMAIL MARKETING</span>
-        </div>
-        <div class="marquee-content">
-            <span>WEB SERVICES</span>
-            <span>WEB DESIGN</span>
-            <span>HOSTING & SECURITY</span>
-            <span>SEO</span>
-            <span>SEARCH ENGINE OPTIMIZATION</span>
-            <span>EMAIL MARKETING</span>
-        </div>
-    </div>
-    
-    <div class="marquee-track marquee-track--bottom">
-        <div class="marquee-content">
-            <span>ENGINE OPTIMIZATION</span>
-            <span>EMAIL MARKETING</span>
-            <span>DIGITAL ADS</span>
-            <span>SOCIAL MEDIA</span>
-            <span>BRANDING</span>
-            <span>GRAPHIC DESIGN</span>
-        </div>
-        <div class="marquee-content">
-            <span>ENGINE OPTIMIZATION</span>
-            <span>EMAIL MARKETING</span>
-            <span>DIGITAL ADS</span>
-            <span>SOCIAL MEDIA</span>
-            <span>BRANDING</span>
-            <span>GRAPHIC DESIGN</span>
-        </div>
-    </div>
-</section>
+
 
 
     <section class="services">

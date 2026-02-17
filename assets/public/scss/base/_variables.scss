@@ -1,222 +1,142 @@
-@use '../abstracts' as a;
+@use '../abstracts/colors' as c;
+@use '../abstracts/breakpoints' as b;
 
 :root {
-  // Colors
-  --clr-background: #{a.color('background')};
-  --clr-white: #{a.color('white')};
-  --clr-black: #{a.color('black')};
-  --clr-main: #{a.color('main')};
-  
-  --clr-primary: #{a.color('primary')};
-  --clr-primary-light: #{a.color('primary-light')};
-  --clr-primary-dark: #{a.color('primary-dark')};
-  
-  --clr-secondary: #{a.color('secondary')};
-  --clr-secondary-light: #{a.color('secondary-light')};
-  --clr-secondary-dark: #{a.color('secondary-dark')};
-  
-  --clr-accent: #{a.color('accent')};
-  
-  // Gray scale
-  --clr-gray-100: #{a.color('gray-100')};
-  --clr-gray-200: #{a.color('gray-200')};
-  --clr-gray-300: #{a.color('gray-300')};
-  --clr-gray-400: #{a.color('gray-400')};
-  --clr-gray-500: #{a.color('gray-500')};
-  --clr-gray-600: #{a.color('gray-600')};
-  --clr-gray-700: #{a.color('gray-700')};
-  --clr-gray-800: #{a.color('gray-800')};
-  --clr-gray-900: #{a.color('gray-900')};
-  
-  // Semantic colors
-  --clr-success: #{a.color('success')};
-  --clr-warning: #{a.color('warning')};
-  --clr-error: #{a.color('error')};
-  --clr-info: #{a.color('info')};
-  
-  //area backgrounds
-  --clr-image-bg:#{a.color('image-bg')};
-  --clr-accordion-title: #{a.color('accordion-title')};
+  // ==========================================================================
+  // 1. COLORS AUTOMATION
+  // ==========================================================================
+  @each $name, $value in c.$colors {
+    --clr-#{$name}: #{$value};
+  }
 
-  // Text colors
-  --clr-text: #{a.color('body')};
-  --clr-text-muted: #{a.color('muted')};
-  --clr-text-light: #{a.color('light')};
-  --clr-link: #{a.color('link')};
-  --clr-link-hover: #{a.color('link-hover')};
+  // ==========================================================================
+  // 2. THEME SEMANTICS (Light Mode Default)
+  // ==========================================================================
+  --clr-background: var(--clr-white);
+  --clr-text:       var(--clr-body);
+  --clr-text-muted: var(--clr-muted); // Προσθήκη για συνέπεια
+  --clr-header-bg:  var(--clr-header-beige);
+
+  // Dynamic Colors (Modern CSS)
+  --clr-card-bg:       hsl(from var(--clr-background) h s calc(l - 5%));
+  --clr-primary-light: hsl(from var(--clr-primary) h s calc(l + 20%));
+  --clr-primary-dark:  hsl(from var(--clr-primary) h s calc(l - 20%));
   
-  // Fonts
-  --f-primary: 'Manrope', sans-serif; 
+  // Form Specifics (Default)
+  --clr-input-bg:     var(--clr-white);
+  --clr-input-border: var(--clr-gray-300);
 
+  --clr-text: var(--clr-white);
+  --clr-link: var(--clr-white);
 
+  // ==========================================================================
+  // 3. TYPOGRAPHY SCALE (Fluid)
+  // ==========================================================================
+  --f-primary:   "Manrope", sans-serif;
 
- // Basic Typography Scale
- --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);      // 12px → 14px
- --font-size-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);        // 14px → 16px  
- --font-size-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);        // 16px → 18px
- --font-size-md: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);       // 18px → 20px
- --font-size-lg: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);        // 20px → 24px
- --font-size-xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);              // 24px → 32px
- --font-size-2xl: clamp(1.875rem, 1.5rem + 1.875vw, 2.5rem);     // 30px → 40px
- --font-size-3xl: clamp(2.25rem, 1.875rem + 1.875vw, 3rem);      // 36px → 48px
+  // Scale
+  --font-size-xs:   clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --font-size-sm:   clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --font-size-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --font-size-md:   clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+  --font-size-lg:   clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --font-size-xl:   clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --font-size-2xl:  clamp(1.875rem, 1.5rem + 1.875vw, 2.5rem);
+  --font-size-3xl:  clamp(2.25rem, 1.875rem + 1.875vw, 3rem);
+
+  // Semantic Aliases
+  --font-size-body:       var(--font-size-base);
+  --font-size-body-large: var(--font-size-md);
+  --font-size-small:      var(--font-size-sm);
+  --font-size-quote:      var(--font-size-lg);
+
+  // Headings Map
+  --font-size-h1: var(--font-size-2xl);
+  --font-size-h2: var(--font-size-xl);
+  --font-size-h3: var(--font-size-lg);
+  --font-size-h4: var(--font-size-md);
+  --font-size-h5: var(--font-size-base);
+  --font-size-h6: var(--font-size-sm);
+  
+  // Components
+  --font-size-hero-title:    clamp(2.5rem, 2rem + 2.5vw, 4rem);
+  --font-size-section-title: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
+
+  // ==========================================================================
+  // 4. SPACING & LAYOUT
+  // ==========================================================================
+  --container-max-width: 1400px;
+  --grid-gutter: 1.5rem;
+
  
- // Semantic Headings (H1-H6)
- --font-size-h1: clamp(1.875rem, 1.5rem + 1.875vw, 2.5rem);      // 30px → 40px
- --font-size-h2: clamp(1.5625rem, 1.25rem + 1.563vw, 2.1875rem); // 25px → 35px
- --font-size-h3: clamp(1.375rem, 1.125rem + 1.25vw, 1.75rem);    // 22px → 28px
- --font-size-h4: clamp(1.25rem, 1rem + 1.25vw, 1.5rem);          // 20px → 24px
- --font-size-h5: clamp(1.125rem, 0.875rem + 1.25vw, 1.25rem);    // 18px → 20px
- --font-size-h6: clamp(1rem, 0.875rem + 0.625vw, 1.125rem);      // 16px → 18px
- 
- // Body Text
- --font-size-body: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);      // 14px → 16px
- --font-size-body-large: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);  // 16px → 18px
- --font-size-small: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);   // 12px → 14px
- 
- // Component-Specific Typography
- --font-size-hero-title: clamp(2.5rem, 2rem + 2.5vw, 4rem);          // 40px → 64px
- --font-size-section-title: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);   // 24px → 32px
- --font-size-carousel-title: clamp(1.375rem, 1.2rem + 0.875vw, 1.5625rem); // 22px → 25px
- --font-size-card-title: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);   // 18px → 20px
- --font-size-article-title: clamp(1rem, 0.875rem + 0.625vw, 1.125rem); // 16px → 18px
- --font-size-product-title: clamp(1.125rem, 1rem + 0.625vw, 1.25rem); // 18px → 20px
- --font-size-product-price: clamp(1.25rem, 1.125rem + 0.625vw, 1.375rem); // 20px → 22px
- --font-size-text-large: clamp(1.125rem, 1.125rem + 0.75vw, 1.5rem); // 18px -> 24px
- --font-size-mega-title: clamp(4rem, 12vw, 18rem);
- 
- // UI Elements
- --font-size-button: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);     // 14px → 16px
- --font-size-button-small: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem); // 12px → 14px
- --font-size-button-large: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);     // 16px → 18px
- --font-size-breadcrumb: clamp(0.75rem, 0.7rem + 0.25vw, 0.8125rem);  // 12px → 13px
- --font-size-navigation: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);     // 14px → 16px
- --font-size-footer: clamp(0.8125rem, 0.75rem + 0.3125vw, 0.875rem); // 13px → 14px
- 
- // Form Elements
- --font-size-input: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);      // 14px → 16px
- --font-size-label: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);      // 14px → 16px
- --font-size-placeholder: clamp(0.8125rem, 0.75rem + 0.3125vw, 0.875rem); // 13px → 14px
- 
- // E-commerce Specific
- --font-size-price-main: clamp(1.25rem, 1.125rem + 0.625vw, 1.375rem);   // 20px → 22px
- --font-size-price-old: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);           // 16px → 18px
- --font-size-discount: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);        // 12px → 14px
- --font-size-rating: clamp(0.8125rem, 0.75rem + 0.3125vw, 0.875rem);     // 13px → 14px
- --font-size-badge: clamp(0.6875rem, 0.625rem + 0.3125vw, 0.75rem);      // 11px → 12px
- 
- // Content Typography  
- --font-size-caption: clamp(0.6875rem, 0.625rem + 0.3125vw, 0.75rem);    // 11px → 12px
- --font-size-quote: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);            // 18px → 20px
 
+  --space-1: 0.25rem;
+  --space-1-5: 0.375rem; // Half-step
+  --space-2: 0.5rem;
+  --space-2-5: 0.625rem; // Half-step
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-7: 4rem;
+  --space-8: 5rem;
 
-  // Spacing
-  --space-1: 0.25rem;  // περίπου 4px
-  --space-2: 0.5rem;   // περίπου 8px
-  --space-3: 1rem;     // περίπου 16px
-  --space-4: 1.5rem;   // περίπου 24px
-  --space-5: 2rem;     // περίπου 32px
-  --space-6: 3rem;     // περίπου 48px
-  --space-7: 4rem;     // περίπου 64px
-  --space-8: 5rem;     // περίπου 80px
-
-  --space-1-5: 0.375rem;  // 6px  (μεταξύ 1 και 2)
-  --space-2-5: 0.625rem;  // 10px (μεταξύ 2 και 3)
-  --space-3-5: 0.875rem;  // 14px (μεταξύ 3 και 4)
-  --space-4-5: 1.75rem;   // 28px (μεταξύ 4 και 5)
-  --space-5-5: 2.5rem;    // 40px (μεταξύ 5 και 6)
-  --space-6-5: 3.5rem;    // 56px (μεταξύ 6 και 7) 
-  
-  // Borders
-  --border-radius-sm: 0.125rem;
-  --border-radius: 0.25rem;
-  --border-radius-md: 0.375rem;
-  --border-radius-lg: 0.5rem;
-  --border-radius-xl: 1rem;
-  --border-radius-full: 9999px;
-  
-  // Component-specific spacing
-  --space-button: 0.75rem;      // 12px - button padding
-  --space-card: 1.25rem;        // 20px - card padding
-  --space-section: 2.5rem;      // 40px - section gaps
-  --space-input: 0.875rem;      // 14px - input padding
-
-
-  //borders
-  --border-radius-sm: 0.125rem;
-  --border-radius: 0.25rem;
-  --border-radius-md: 0.375rem;
-  --border-radius-lg: 0.5rem;
-  --border-radius-xl: 1rem;
+  // ==========================================================================
+  // 5. UI ELEMENTS & DEPTH
+  // ==========================================================================
+  --border-radius-sm:   0.125rem;
+  --border-radius:      0.25rem;
+  --border-radius-md:   0.375rem;
+  --border-radius-lg:   0.5rem;
+  --border-radius-xl:   1rem;
   --border-radius-full: 9999px;
 
-  // Shadows
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  
-  // Transitions
-  --transition-fast: 150ms;
-  --transition-normal: 300ms;
-  --transition-slow: 500ms;
-  --transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-ease-in: cubic-bezier(0.4, 0, 1, 1);
-  --transition-ease-out: cubic-bezier(0, 0, 0.2, 1);
-  --transition-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-  
-  // Z-index
-  --z-below: -1;
-  --z-normal: 1;
-  --z-above: 10;
-  --z-modal: 100;
-  --z-popover: 200;
-  --z-tooltip: 300;
-  --z-overlay: 400;
+  --shadow:    0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 
-  // pixels
-  --px-1: 1px;
-  --px-2: 2px;
-  --px-3: 3px;
-  --px-4: 4px;
-  --px-5: 5px;
-  --px-8: 8px;
-  --px-10: 10px;
-  --px-12: 12px;
-  --px-15: 15px;
-  --px-16: 16px;
-  --px-20: 20px;
-  --px-24: 24px;
-  --px-30: 30px;
-  --px-32: 32px;
-  --px-40: 40px;
-  --px-48: 48px;
-
+  --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  // Z-Index Stack (Πολύ σημαντικό να διατηρηθεί)
+  --z-below:  -1;
+  --z-normal:  1;
+  --z-above:   10;
+  --z-header:  100; // Πρόσθεσα αυτό γιατί πάντα χρειάζεται
+  --z-modal:   1000;
 }
 
-// Dark theme (προσθήκη μελλοντικής υποστήριξης dark mode)
-@media (prefers-color-scheme: dark) {
+
+@include b.up('xxxl') { 
   :root {
-    // Αντιστροφή χρωμάτων για dark mode
-    // Μπορείς να το σχολιάσεις αν δεν θέλεις dark mode ακόμα
-    /*
-    --clr-background: #{a.color('gray-900')};
-    --clr-text: #{a.color('gray-100')};
-    --clr-text-muted: #{a.color('gray-400')};
-    --clr-text-light: #{a.color('gray-600')};
-    
-    // Προσαρμογή άλλων χρωμάτων για dark mode
-    --clr-gray-100: #{a.color('gray-800')};
-    --clr-gray-200: #{a.color('gray-700')};
-    --clr-gray-800: #{a.color('gray-200')};
-    --clr-gray-900: #{a.color('gray-100')};
-    
-    // Σκοτεινότερες σκιές για dark mode
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-    */
+    --container-max-width: 1640px; 
+    --grid-gutter: 2rem;
   }
+}
+
+@include b.up('fhd') { 
+  :root {
+    --container-max-width: 1800px; 
+    --grid-gutter: 2rem;
+  }
+}
+
+// ==========================================================================
+// DARK MODE CONFIGURATION
+// ==========================================================================
+body.dark-mode {
+  --clr-background: var(--clr-gray-900);
+  --clr-text:       var(--clr-gray-100);
+  --clr-text-muted: var(--clr-gray-400);
+  --clr-header-bg:  var(--clr-gray-900);
+
+  // Recalculate dynamic colors
+  --clr-card-bg: hsl(from var(--clr-background) h s calc(l + 5%));
+  
+  // Dark Mode Specifics
+  --clr-input-bg:     var(--clr-gray-800);
+  --clr-input-border: var(--clr-gray-700);
+  
+  // Stronger shadows for dark mode visibility
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
 }

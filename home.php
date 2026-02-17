@@ -138,9 +138,9 @@
                     <li>
                         <a href="http://">
                             <figure>
-                                <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/opson.jpg" alt=""> 
+                                <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/manetas-project.jpg" alt=""> 
                                 <figcaption>
-                                    Opson website
+                                    Manetas πλακακια μπανιου | δαπεδου, εσωτερικου & εξωτερικου χωρου
                                 </figcaption>
                             </figure>
                         </a>
@@ -150,7 +150,7 @@
                             <li>
                                 <a href="http://">
                                     <figure>
-                                        <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/opson.jpg" alt=""> 
+                                        <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/manetas-project.jpg" alt=""> 
                                         <figcaption>
                                             Opson website
                                         </figcaption>

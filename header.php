@@ -308,47 +308,39 @@ document.addEventListener('DOMContentLoaded', () => {
             </script>
     </head>
     <body <?php body_class(); ?>>
-
-    <?php if (is_front_page()) : ?>
-        <header class="home-header">
-            <!-- Μεγάλο header για αρχική -->
-        </header>
-    <?php else : ?>
-        <header class="page-header">
-            <div class="container">
-                <div class="page-header__logo">
-                    <a href="<?php echo home_url(); ?>">
-                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo-small.svg" alt="Nedahost">
-                    </a>
-                </div>
-                <nav>
-                    <?php wp_nav_menu(array('theme_location' => 'primary', 'menu_class' => 'dropdown')); ?>
-                </nav>
+<?php if (is_front_page()) : ?>
+    <header class="home-header">
+        <nav>
+            <?php wp_nav_menu(array(
+                'theme_location' => 'primary',
+                'menu_class' => 'dropdown'
+            )); ?>
+        </nav>
+        <div class="container">
+            <div class="text">
+                A web design and development 
+                agency in Athens
             </div>
-        </header>
-    <?php endif; ?>
-
-
-        <header class="home-header">
+            <div class="logo">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.svg" alt="Nedahost">
+            </div>
+        </div>
+    </header>
+<?php else : ?>
+    <header class="page-header">
+        <div class="container">
+            <div class="page-header__logo">
+                <a href="<?php echo home_url(); ?>">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo-small.svg" alt="Nedahost">
+                </a>
+            </div>
             <nav>
-                <?php
-                wp_nav_menu(
-                    array(
-                        'theme_location' => 'primary',
-                        'menu_class' => 'dropdown'
-                    )
-                );
-                ?>
+                <?php wp_nav_menu(array(
+                    'theme_location' => 'primary',
+                    'menu_class' => 'dropdown'
+                )); ?>
             </nav>
-            <div class="container"><!-- container start -->
-
-                <div class="text">
-                    A web design and development 
-                    agency in Athens
-                </div>
-                <div class="logo"><!-- logo start -->
-                    <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/logo.svg" alt="Nedahost">
-                </div><!-- logo end -->
-            </div><!-- container end -->
-        </header>
-        <main> 
+        </div>
+    </header>
+<?php endif; ?>
+<main>

@@ -122,10 +122,10 @@
         padding: 0;
         border-bottom: 4px solid var(--clr-white);
         
-        @include a.breakpoint-down('md') {
+        /*@include a.breakpoint-down('md') {
           flex-wrap: wrap;
           gap: 15px 30px;
-        }
+        }*/
       }
       
       li {
@@ -310,49 +310,61 @@
       margin: 0;
     }
   }
-    .listprojects{
-        padding: 0 100px;
-        ul{
-            li{
-                a{
-                    figure{
-                        img{
+  .listprojects {
+    padding: 0 100px;
+    
+    > ul {
+        > li {
+            // Large featured image
+            &:first-child {
+                a {
+                    figure {
+                        img {
                             border-radius: 30px;
                             width: 100%;
                             height: auto;
-                        }
-                        figcaption{
-                            font-size: 35px;
-                            color: var(--clr-white);
+                            object-fit: cover;
+                            aspect-ratio: 16 / 9; // keeps consistent ratio
                         }
                     }
                 }
-                ul{
-                    display: flex;
-                    gap: 38px;
-                    padding: 94px 0;
-                    li{
-                        width: 50%;
-                        .right-box {
-                            height: 87%; /* Ύψος του κουτιού */
-                            border: 1px solid var(--clr-white); /* Περίγραμμα */
-                            border-radius: 10px; /* Στρογγυλεμένες γωνίες */
-                            display: flex; /* Flexbox για κεντράρισμα */
-                            justify-content: center; /* Οριζόντια στοίχιση του "+" */
-                            align-items: center; /* Κάθετη στοίχιση του "+" */
-                            background-color: transparent; /* Φόντο του κουτιού */
-                          }
-                          
-                          .plus-symbol {
-                            color: var(--clr-white);
-                            font-size: 40px; /* Μέγεθος του "+" */
-                            font-weight: bold; /* Πάχος γραμματοσειράς */
-                          }
+            }
+            
+            // Grid rows with 2 items
+            ul {
+                display: flex;
+                gap: 38px;
+                padding: 38px 0; // 94px was too much, adjust as needed
+                
+                li {
+                    width: calc(50% - 19px); // half minus half the gap
+                    
+                    a {
+                        figure {
+                            img {
+                                border-radius: 15px;
+                                width: 100%;
+                                height: auto;
+                                object-fit: cover;
+                                aspect-ratio: 16 / 10;
+                            }
+                        }
+                    }
+                    
+                    .right-box {
+                        aspect-ratio: 16 / 10; // match the image aspect ratio
+                        border: 1px solid var(--clr-white);
+                        border-radius: 15px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: transparent;
                     }
                 }
             }
         }
     }
+}
 }
 
 .outercontact{

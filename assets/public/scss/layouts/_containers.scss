@@ -1,0 +1,63 @@
+@use '../abstracts' as a;
+
+// ==================================================
+// MAIN CONTAINER (.wrapper)
+// ==================================================
+.container {
+  width: 100%;
+  
+  // Logical Properties: Αντικαθιστά margin-left/right: auto
+  margin-inline: auto;
+  
+  // Το βασικό όριο (1400px ή 1320px ανάλογα το var)
+  max-width: var(--container-max-width);
+  
+  // Logical Padding (Left/Right)
+  // Χρησιμοποιούμε το gutter για να "αναπνέει" το περιεχόμενο στις άκρες
+  padding-inline: var(--grid-gutter, 1rem); 
+
+  // Responsive Gutter Adjustment
+  /*
+  @include a.up('md') {
+    padding-inline: var(--space-5); // 25rem
+  }
+
+  @include a.up('xl') {
+    padding-inline: var(--space-6); // 3rem
+  }
+  */
+
+  // ------------------------------------------------
+  // MODIFIERS
+  // ------------------------------------------------
+  
+  // Fluid: Πιάνει όλο το πλάτος (π.χ. για Hero Banner background)
+  &--fluid {
+    max-width: 100%;
+    // Προαιρετικά μηδενίζουμε το padding αν θέλουμε edge-to-edge
+    // padding-inline: 0; 
+  }
+  
+  // Narrow: Βέλτιστο για ανάγνωση κειμένου (Blog Posts)
+  &--narrow {
+    // 65ch = πλάτος 65 χαρακτήρων (The Golden Standard for readability)
+    max-width: min(100%, 65ch); 
+  }
+  
+  // Wide: Dashboard / Data Tables / Galleries
+  &--wide {
+    max-width: 1800px;  
+  }
+}
+
+// ==================================================
+// VERTICAL SPACING WRAPPER (Sections)
+// ==================================================
+.content-wrapper {
+  // Logical Padding (Top/Bottom)
+  padding-block: var(--space-6);
+  
+  @include a.up('md') {
+    padding-block: var(--space-8);
+  }
+}

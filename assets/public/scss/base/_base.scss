@@ -1,157 +1,60 @@
-@use './typography' as t;
 @use '../abstracts' as a;
 
-html{
-    font-size: 100%;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    height: 100%;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    //scroll-behavior: smooth;
-    @include a.breakpoint-up(md) {
-        font-size: 105%;
-      }
-      
-      @include a.breakpoint-up(lg) {
-        font-size: 110%;
-      }
+// ==================================================
+// GLOBAL LAYOUT & BEHAVIOR
+// ==================================================
+
+body {
+  // Sticky Footer Technique (Flexbox Column)
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  
+  background-color: var(--clr-background);
+  color: var(--clr-text);
+  
+  // Mobile enhancements
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
 }
 
-*, *::before , *::after{
-    -moz-box-sizing: inherit;
-    -ms-box-sizing: inherit;
-    -webkit-box-sizing: inherit;
-    box-sizing: inherit;
-} 
+// Main Content Area
+// Πιάνει όλο τον διαθέσιμο χώρο ανάμεσα σε header/footer
+main {
+  flex: 1 0 auto;
+  width: 100%;
+  
+  // Global Padding Logic
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
 
-
-body{
-    min-height: 100vh;
-    margin: 0px;
-    padding: 0px;
-    background: var(--clr-background);
-    color: var(--clr-text);
-    font-family: var(--f-primary);
-    font-weight: 300;
-    font-size: var(--font-size-body);
-    -webkit-tap-highlight-color: transparent;
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch
-}
-
-main{
-    flex: 1 0 auto;
-    background: a.color('white');
-    
-    // Βασικό padding στο mobile
-    padding: var(--space-3) 0;
-    
-    @include a.breakpoint-up(md) {
-        padding: var(--space-4) 0;
-    }
-    
-    @include a.breakpoint-up(lg) {
-        padding: var(--space-5) 0;
-    }
-    
-}
-
-.wrapper {
-    margin: 0 auto;
-    width: 100%;
-    
-    // Responsive padding
-    padding-left: var(--space-3);
-    padding-right: var(--space-3);
-    
-    @include a.breakpoint-up(sm) {
-      padding-left: var(--space-4);
-      padding-right: var(--space-4);
-    }
-    
-    @include a.breakpoint-up(md) {
-      padding-left: var(--space-5);
-      padding-right: var(--space-5);
-    }
-    
-    @include a.breakpoint-up(lg) {
-      padding-left: var(--space-5-5);
-      padding-right: var(--space-5-5);
-    }
-    
-    // Max-width για μεγάλες οθόνες
-    @include a.breakpoint-up(xl) {
-      max-width: 100%;
-    }
-  }
-
-
-  // Utility classes
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+  @include a.up('md') { 
+    padding-top: var(--space-4); 
+    padding-bottom: var(--space-4); 
   }
   
-  // Focus styles για προσβασιμότητα
-  :focus {
-    outline: 2px solid var(--clr-focus, a.color('primary'));
-    outline-offset: 2px;
+  @include a.up('lg') { 
+    padding-top: var(--space-5); 
+    padding-bottom: var(--space-5); 
   }
-  
-  // Remove focus styles for mouse users
-  :focus:not(:focus-visible) {
-    outline: none;
-  }
+}
 
+// ==================================================
+// GLOBAL INTERACTION STATES
+// ==================================================
 
+// Text Selection
+::selection {
+  color: var(--clr-white);
+  background-color: var(--clr-primary);
+}
 
-/* Βελτίωση προσβασιμότητας για focus */
+// Focus Management (Accessibility)
 :focus-visible {
-    outline: 2px solid #000;
-    outline-offset: 2px;
+  outline: 2px solid var(--clr-primary);
+  outline-offset: 2px;
 }
 
-/* Βελτίωση προσβασιμότητας για reduced motion */
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
-    
-    *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-
-/* Βελτίωση απόδοσης για animations */
-* {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-}
-
-/* Διόρθωση για iOS tap highlight */
-input,
-textarea,
-button,
-select,
-a {
-    -webkit-tap-highlight-color: transparent;
-}
-
-.container{
-    padding: 0 64px 64px;
+:focus:not(:focus-visible) {
+  outline: none;
 }

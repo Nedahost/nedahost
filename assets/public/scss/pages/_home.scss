@@ -199,6 +199,10 @@
                             object-fit: cover;
                             aspect-ratio: 16 / 9; // keeps consistent ratio
                         }
+                        figcaption{
+                          font-size: var(--font-size-display);
+                          padding-top: 10px;
+                        }
                     }
                 }
             }
@@ -220,6 +224,10 @@
                                 height: auto;
                                 object-fit: cover;
                                 aspect-ratio: 16 / 10;
+                            }
+                            figcaption{
+                              font-size: var(--font-size-display);
+                              padding-top: 10px;
                             }
                         }
                     }

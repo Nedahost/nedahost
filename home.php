@@ -1,8 +1,6 @@
 <?php get_header(); ?>
 
 <section class="outerwelcome"><!-- outer welcome start -->
-
-
     <div class="container"><!-- container start -->
         <div class="hometext">
             <div class="hometext__title"><!-- title start -->

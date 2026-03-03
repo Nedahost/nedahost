@@ -1,17 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
   
-  // Lenis smooth scroll
-  window.lenis = new Lenis({
-    duration: 1.2,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    smoothWheel: true,
-  });
-
-  function raf(time) {
-    window.lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-  requestAnimationFrame(raf);
+  
 
   // Smooth scroll για links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {

@@ -12,7 +12,7 @@
   // ==========================================================================
   // 2. THEME SEMANTICS (Light Mode Default)
   // ==========================================================================
-  --clr-background: var(--clr-white);
+  --clr-background: var(--clr-black);
   --clr-text:       var(--clr-body);
   --clr-text-muted: var(--clr-muted); // Προσθήκη για συνέπεια
   --clr-header-bg:  var(--clr-header-beige);
@@ -67,7 +67,7 @@
   // Components
   --font-size-hero-title:    clamp(2.5rem, 2rem + 2.5vw, 4rem);
   --font-size-section-title: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
-  --font-size-page-title: clamp(5rem, 3rem + 10vw, 18.75rem);
+  --font-size-page-title: clamp(2.5rem, 1rem + 10vw, 18.75rem);
   --font-size-display: clamp(1.125rem, 0.7625rem + 1.1875vw, 2.1875rem);
 
   // ==========================================================================
@@ -117,7 +117,7 @@
 
 @include b.up('xxxl') { 
   :root {
-    --container-max-width: 1640px; 
+    --container-max-width: 1590px; 
     --grid-gutter: 2rem;
   }
 }

@@ -120,8 +120,12 @@
         </div>
         
         <div class="carousel-navigation">
-            <button class="carousel-prev">←</button>
-            <button class="carousel-next">→</button>
+            <button class="carousel-prev">
+                <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/arrow-left.png" alt="Previous slide" /> 
+            </button>
+            <button class="carousel-next">
+                <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/arrow-right.png" alt="Next slide" />
+            </button>
         </div>
     </div>
 </section>
@@ -138,7 +142,7 @@
                             <figure>
                                 <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/manetas-project.jpg" alt=""> 
                                 <figcaption>
-                                    Manetas πλακακια μπανιου | δαπεδου, εσωτερικου & εξωτερικου χωρου
+                                    Manetas 
                                 </figcaption>
                             </figure>
                         </a>

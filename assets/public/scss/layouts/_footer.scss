@@ -1,100 +1,139 @@
 @use '../abstracts' as a;
 
 footer {
+  position: relative;
+  z-index: 1;
+  background: var(--clr-black);
+  color: var(--clr-white);
+  padding: 20px 64px;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  @include a.down('lg') {
+    padding: 20px 32px;
+  }
+
+  @include a.down('sm') {
+    padding: 20px 16px;
+    min-height: auto;
+    gap: var(--space-8);
+    padding-block: var(--space-8);
+  }
+
+  .letsstart {
     position: relative;
-    z-index: 1;
-    background: var(--clr-black);
-    color: var(--white-color);
-    padding: 20px 64px;
-    width: 100%;
-    min-height: 100vh;
+    font-size: clamp(3rem, 17vw + 1rem, 20rem);
+    font-weight: 300;
+    line-height: .8;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+
+    &__text {
+      position: relative;
+      z-index: 2;
+    }
+
+    &__images {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+
+      @include a.down('sm') {
+        display: none;
+      }
+    }
+
+    .hover-img {
+      position: absolute;
+      width: 200px;
+      height: auto;
+      border-radius: 10px;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+
+      @include a.down('md') {
+        width: 150px;
+      }
+
+      &--1 {
+        top: 80%;
+        left: -5%;
+        transform: rotate(-5deg) scale(0.8);
+      }
+
+      &--2 {
+        top: -10%;
+        right: -5%;
+        transform: rotate(5deg) scale(0.8);
+      }
+    }
+
+    &:hover {
+      .hover-img {
+        opacity: 1;
+
+        &--1 {
+          transform: rotate(-5deg) scale(1);
+        }
+
+        &--2 {
+          transform: rotate(5deg) scale(1);
+        }
+      }
+    }
+  }
+
+  .footercontacts {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    
-    .letsstart {
-        position: relative;
-        font-size: clamp(3rem, 17vw + 1rem, 20rem);
-        font-weight: 300;
-        line-height: .8;
-        text-transform: uppercase;
-        text-align: center;
-        cursor: pointer;
-        
-        &__text {
-            position: relative;
-            z-index: 2;
-        }
-        
-        &__images {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
-        
-        .hover-img {
-            position: absolute;
-            width: 200px;
-            height: auto;
-            border-radius: 10px;
-            opacity: 0;
-            transform: scale(0.8);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-            
-            &--1 {
-                top: 80%;
-                left: -5%;
-                transform: rotate(-5deg) scale(0.8);
-            }
-            
-            &--2 {
-                top: -10%;
-                right: -5%;
-                transform: rotate(5deg) scale(0.8);
-            }
-        }
-        
-        &:hover {
-            .hover-img {
-                opacity: 1;
-                
-                &--1 {
-                    transform: rotate(-5deg) scale(1);
-                }
-                
-                &--2 {
-                    transform: rotate(5deg) scale(1);
-                }
-            }
-        }
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
+    font-size: clamp(12px, 2vw + 0.5rem, 20px);
+    font-weight: 300;
+
+    @include a.down('md') {
+      flex-wrap: wrap;
+      gap: var(--space-5);
+      justify-content: center;
     }
-    
-    .footercontacts {
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        width: 100%;
-        text-align: center;
-        font-size: clamp(12px, 2vw + 0.5rem, 20px);
-        font-weight: 300;
-        
-        ul {
-            text-align: left;
-            
-            &:last-child {
-                list-style: disc;
-            }
-            
-            li {
-                a {
-                    color: var(--white-color);
-                }
-            }
-        }
+
+    @include a.down('sm') {
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-4);
     }
+
+    ul {
+      text-align: left;
+
+      @include a.down('sm') {
+        text-align: center;
+      }
+
+      &:last-child {
+        list-style: disc;
+
+        @include a.down('sm') {
+          list-style: none;
+        }
+      }
+
+      li {
+        a {
+          color: var(--clr-white);
+        }
+      }
+    }
+  }
 }

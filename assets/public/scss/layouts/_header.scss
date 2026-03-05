@@ -3,8 +3,7 @@
 
 header{ 
     background: var(--clr-black);
-    width: 100%;
-    min-height: 100vh;
+    width: 100vw;
     position: fixed;
     top: 0;
     left: 0;
@@ -13,7 +12,11 @@ header{
     flex-direction: column;
     justify-content: flex-end;
 
- 
+    height: 100svh;
+  
+    @supports not (height: 100svh) {
+      height: 100vh; // fallback για παλιούς browsers
+    }
 
     nav{
         position: absolute;
@@ -23,6 +26,14 @@ header{
     }
     .container{
         padding: 0 64px 64px;
+        
+        @include a.down('lg') {
+            padding: 0 32px 32px;
+          }
+        
+          @include a.down('sm') {
+            padding: 0 16px 24px;
+          }
         .text{
             font-size: var(--font-size-display);
             letter-spacing: 0px;

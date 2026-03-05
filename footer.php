@@ -20,8 +20,9 @@
             <li>+30 697 5686 473</li>
         </ul>
         <ul>
-            <li><a href="http://">Facebook</a></li>
-            <li><a href="http://">Instagram</a></li>
+            <li><a href="https://www.facebook.com/nedahost" target="_blank">Facebook</a></li>
+            <li><a href="https://www.instagram.com/nedahost" target="_blank">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/company/nedahost" target="_blank">Linkedin</a></li>
         </ul>
     </div>
     <?php wp_footer(); ?>

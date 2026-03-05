@@ -310,12 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <body <?php body_class(); ?>>
 <?php if (is_front_page()) : ?>
     <header class="home-header">
-        <nav>
-            <?php wp_nav_menu(array(
-                'theme_location' => 'primary',
-                'menu_class' => 'dropdown'
-            )); ?>
-        </nav>
+        
         <div class="container">
             <div class="text">
                 A web design and development 

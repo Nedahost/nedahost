@@ -171,6 +171,7 @@
                             </li>
                         </ul>
                     </li>
+                    <?php /*
                     <li>
                         <ul>
                             <li>
@@ -191,7 +192,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> */ ?>
                 </ul>
             </div><!-- list projects end -->
         </div><!-- container end -->
